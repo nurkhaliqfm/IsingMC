@@ -7,17 +7,18 @@ This program provides Monte Carlo simulations of 2D Ising model.
 
 ## CLI
 
-> py main.py [-s|--seed <int>] [-L|--length <int>] [-T*|--temperature-reduced <float>] [-h|--external-magnetic-field <float>] [-J|--J|--interaction <float>] [-K|--K|--steps <int>] [-m|-m0|--initial-magnetization <float>] [-alg|--algorithm <string>] [-a|--animation [<char><char>]] [-sc|--save-configuration [<path>]] [-sm|--save-magnetization [<path>]]
+`py main.py [-s|--seed <int>] [-L|--length <int>] [-T*|--temperature-reduced <float>] [-h|--external-magnetic-field <float>] [-J|--J|--interaction <float>] [-K|--K|--steps <int>] [-m|-m0|--initial-magnetization <float>] [-alg|--algorithm <string>] [-a|--animation [<char><char>]] [-sc|--save-configuration [<path>]] [-sm|--save-magnetization [<path>]]`
 
 ## DESCRIPTION
 `-s <int>`</br>
 `--seed <int>`</br>
 <div>
   <ul>
-    A seed `<int>` for the random number generator in module "random".</br>
+    A seed <code>int</code> for the random number generator in module "random".</br>
     The default is 1997.
   </ul>
 </div>
+
 
 `-L <int>`</br>
 `--length <int>`</br>
@@ -28,6 +29,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
   </ul>
 </div>
 
+
 `-T* <float>`</br>
 `--temperature-reduced <float>`</br>
 <div>
@@ -37,6 +39,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
   </ul>
 </div>
 
+
 `-h <float>`</br>
 `--external-magnetic-field <float>`</br>
 <div>
@@ -45,6 +48,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
     The default is 0.0.
   </ul>
 </div>
+
 
 `-J <float>`</br>
 `--J <float>`</br>
@@ -56,6 +60,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
   </ul>
 </div>
 
+
 `-K <int>`</br>
 `--K <int>`</br>
 `--steps <int>`</br>
@@ -66,6 +71,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
   </ul>
 </div>
 
+
 `-m <float>`</br>
 `-m0 <float>`</br>
 `--initial-magnetization <float>`</br>
@@ -75,6 +81,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
     The default is 0.0
   </ul>
 </div>
+
 
 `-alg <string>`</br>
 `--algorithm <string>`</br>
@@ -87,6 +94,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
   </ul>
 </div>
 
+
 `-a [<char><char>]`</br>
 `--animation [<char><char>]`</br>
 <div>
@@ -96,6 +104,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
   </ul>
 </div>
 
+
 `-sc [<path>]`</br>
 `--save-configuration [<path>]`</br>
 <div>
@@ -104,6 +113,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
     The dafault is "./".
   </ul>
 </div>
+
 
 `-sm [<path>]`</br>
 `--save-magnetization [<path>]`</br>
