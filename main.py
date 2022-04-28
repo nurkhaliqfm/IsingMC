@@ -4,7 +4,7 @@ ABOUT
 This program provides Monte Carlo simulations of 2D Ising model.
 
 EVOKE
-py IsingMC.py [-s|--seed <int>] [-l|--length <int>] [-t|--temperature-reduced <float>] [-j|--j <float>] [-k|--k <int>] [-i|--initial-state <int>] [-alg|--algorithm <string>] [-a|--animation [<char><char>]] [-ss|--save-system [<path>]] [-sm|--save-magnetization [<path>]]
+py main.py [-s|--seed <int>] [-L|--length <int>] [-T*|--temperature-reduced <float>] [-h|--external-magnetic-field <float>] [-J|--J|--interaction <float>] [-K|--K|--steps <int>] [-m|-m0|--initial-magnetization <float>] [-alg|--algorithm <string>] [-a|--animation [<char><char>]] [-sc|--save-configuration [<path>]] [-sm|--save-magnetization [<path>]]
 
 DESCRIPTION
 -s <int>
@@ -39,8 +39,8 @@ DESCRIPTION
     Number of desired MCSs (iterations) K == <int>.
     The default is 1.
 
--m0 <float>
 -m <float>
+-m0 <float>
 --initial-magnetization <float>
     Initiated magnetization m = <float>.
     The default is 0.0
