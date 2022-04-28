@@ -14,7 +14,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
 `--seed <int>`</br>
 <div>
   <ul>
-    A seed <code><int></code> for the random number generator in module "random".</br>
+    A seed <code>&#60;int&#62;</code> for the random number generator in module "random".</br>
     The default is 1997.
   </ul>
 </div>
