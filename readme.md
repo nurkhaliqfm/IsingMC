@@ -7,14 +7,14 @@ This program provides Monte Carlo simulations of 2D Ising model.
 
 ## CLI
 
-`py main.py [-s|--seed <int>] [-L|--length <int>] [-T*|--temperature-reduced <float>] [-h|--external-magnetic-field <float>] [-J|--J|--interaction <float>] [-K|--K|--steps <int>] [-m|-m0|--initial-magnetization <float>] [-alg|--algorithm <string>] [-a|--animation [<char><char>]] [-sc|--save-configuration [<path>]] [-sm|--save-magnetization [<path>]]`
+    py main.py [-s|--seed <int>] [-L|--length <int>] [-T*|--temperature-reduced <float>] [-h|--external-magnetic-field <float>] [-J|--J|--interaction <float>] [-K|--K|--steps <int>] [-m|-m0|--initial-magnetization <float>] [-alg|--algorithm <string>] [-a|--animation [<char><char>]] [-sc|--save-configuration [<path>]] [-sm|--save-magnetization [<path>]]
 
 ## DESCRIPTION
 `-s <int>`</br>
 `--seed <int>`</br>
 <div>
   <ul>
-    A seed <code>int</code> for the random number generator in module "random".</br>
+    A seed <code><int></code> for the random number generator in module "random".</br>
     The default is 1997.
   </ul>
 </div>
