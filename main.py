@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 ABOUT
 This program provides Monte Carlo simulations of 2D Ising model.
@@ -26,7 +27,7 @@ DESCRIPTION
     External homogenious magnetic field h = <float> of the system.
     The default is 0.0.
 
--J <float> 
+-J <float>
 --J <float>
 --interaction <float>
     Interaction J = <float> between a pair of spins.
@@ -39,11 +40,12 @@ DESCRIPTION
     The default is 1.
 
 -m0 <float>
+-m <float>
 --initial-magnetization <float>
     Initiated magnetization m = <float>.
     The default is 0.0
 
--alg <string> 
+-alg <string>
 --algorithm <string>
     An algorithm used by the Monte Carlo method to computing evolution of the system. Avaliable algorithms:
         <string> == 'metropolis'
@@ -55,8 +57,8 @@ DESCRIPTION
     Turns on the visual evolution of the system. <char><char> is a pair of characters that represents spin "up" and spin "down". The total time of execution will increase. Works only on Windows OS.
     The default pair is U+0020, U+2588.
 
--ss [<path>]
---save-system [<path>]
+-sc [<path>]
+--save-configuration [<path>]
     At the end of the simulation the configuration of spins S[ij] will be saved in a given directory <path>.
     The dafault is "./".
 
@@ -71,78 +73,94 @@ Wojciech Rożek
 if __name__ == '__main__':
     import sys
     import init
-    import core
     import random
     import os
 
-    ARGV = sys.argv
+    argv = sys.argv
 
-    SEED = init.seed(ARGV)  # for random trajectories
-    L = init.length(ARGV)   # length of the lattice
-    TRED = init.reduced_temperature(ARGV)    # reduced temperature T*
-    H = init.external_magnetic_field(ARGV)    # external magnetic field h
-    J = init.j(ARGV)    # interaction parameter
-    K = init.k(ARGV)    # number of MCS
-    M0 = init.initial_magnetization(ARGV)     # mod of the initial state od the system
-    ALGORITHM = init.algorithm(ARGV)    # an algorithm for computing the Monte Carlo method
-    ANIMATION = init.animation_markers(ARGV)     # animation markers
-    SAVE_DIR_SYSTEM = init.save_system_path(ARGV)     # a path to save lattice
-    SAVE_DIR_MAGNETIZATION = init.save_magnetization_path(ARGV)   # a path to save magnetization
+    seed = init.seed_from(argv)      # for random trajectories
+    lattice_length = init.lattice_length_from(argv)      # length of the lattice
+    red_temperature = init.reduced_temperature_from(argv)        # reduced temperature T*
+    emf = init.external_magnetic_field_from(argv)        # external magnetic field h
+    interaction = init.interaction_from(argv)        # interaction parameter
+    mcss = init.mcss_from(argv)    # number of Monte Carlo steps
+    magetization0 = init.initial_magnetization_from(argv)        # initial value of magnetization of the system
+    algorithm = init.algorithm_from(argv)        # an algorithm for computing the Monte Carlo method
+    animation = init.animation_markers_from(argv)        # markers for animating evolution of the system
+    save_configuration_dir = init.save_configuration_path_from(argv)   # path to save final spins configuration
+    save_magnetization_dir = init.save_magnetization_path_from(argv)   # path to save magnetization
 
-    BETA = 1/J/TRED     # 1/(k_BT)
+    beta = 1/interaction/red_temperature     # 1/(k_BT)
 
-    def generate_spin(p: float) -> int:
-        "Return a spin 'up' with the probability p."
-        if random.random() <= p:    return 1
-        else:                       return -1
+    def generate_spin(probability: float) -> int:
+        "Return a spin 'up' with the given probability."
+        if random.random() <= probability:
+            return 1
+        return -1
 
     # initializing a system of spins
-    random.seed(SEED)
-    p = (M0 + 1)/2   # probability of initiation of a "up" spin
-    lattice = [[generate_spin(p) for column in range(0,L)] for row in range(0,L)]
+    random.seed(seed)
+    up_probability = (magetization0 + 1)/2      # probability of initiation a spin as "up"
+    config = [[generate_spin(up_probability) for column in range(0, lattice_length)] for row in range(0, lattice_length)]        # a lattice of spins
 
     # general processing
-    lattice, magnetization = core.kernel(lattice, L, K, TRED, H, BETA, SEED, ANIMATION, ALGORITHM)
+    magnetization = ...
+    if animation:
+        if emf == 0.0:
+            from kernel import mc_a
+            lattice, magnetization = mc_a(config, mcss, red_temperature, beta, algorithm, seed, animation)
+        else:
+            from kernel import mc_h_a
+            lattice, magnetization = mc_h_a(config, mcss, red_temperature, emf, beta, algorithm, seed, animation)
+    else:
+        if emf == 0.0:
+            from kernel import mc_raw
+            lattice, magetization = mc_raw(config, mcss, red_temperature, beta, algorithm, seed)
+        else:
+            from kernel import mc_h
+            lattice, magnetization = mc_h(config, mcss, red_temperature, emf, beta, algorithm, seed)
 
-    # saving the configuration of spins 
-    if SAVE_DIR_SYSTEM:
-        FILE_NAME = ''.join(['L', str(L),
-                              'Tred', str(TRED),
-                              'h', str(H),
-                              'J', str(J),
-                              'K', str(K),
-                              'm', str(M0),
-                              ALGORITHM,
-                              ' lattice'])
-        file_path = SAVE_DIR_SYSTEM + FILE_NAME + ' (1)'
-        file_counter = 1
-        while os.path.isfile(file_path): 
-            file_counter += 1
-            file_path = ''.join([SAVE_DIR_SYSTEM, FILE_NAME, ' (', str(file_counter), ')'])
-        file = open(file_path, "w")
-        for row in lattice:
-            for spin in row:
-                if spin > 0:    file.write('1')
-                else:           file.write('0')
-            file.write('\n')
-        file.close()
+    # saving the configuration of spins
+    if save_configuration_dir:
+        file_name = ''.join(['L', str(lattice_length),
+                             'Tred', str(red_temperature),
+                             'h', str(emf),
+                             'J', str(interaction),
+                             'K', str(mcss),
+                             'm', str(magetization0),
+                             algorithm,
+                             ' configuration'])
+        file_path = save_configuration_dir + file_name + ' (1)'
+        file_name_counter = 1
+        while os.path.isfile(file_path):
+            file_name_counter += 1
+            file_path = ''.join([save_configuration_dir, file_name, ' (', str(file_name_counter), ')'])
+        with open(file_path, 'w', encoding='UTF-8') as file:
+            for row in config:
+                for spin in row:
+                    if spin > 0:
+                        file.write('1')
+                    else:
+                        file.write('0')
+                file.write('\n')
+            file.close()
 
     # saving the evolution of magnetization
-    if SAVE_DIR_MAGNETIZATION:
-        FILE_NAME = ''.join(['L', str(L),
-                              'Tred', str(TRED),
-                              'h', str(H),
-                              'J', str(J),
-                              'K', str(K),
-                              'm', str(M0),
-                              ALGORITHM,
-                              ' magnetization'])
-        file_path = ''.join([SAVE_DIR_MAGNETIZATION, FILE_NAME, ' (1)'])
-        file_counter = 1
-        while os.path.isfile(file_path): 
-            file_counter += 1
-            file_path = ''.join([SAVE_DIR_MAGNETIZATION, FILE_NAME, ' (', str(file_counter), ')'])
-        file = open(file_path, "w")
-        for m in magnetization:
-            file.write(str(m) + '\n')
-        file.close()
+    if save_magnetization_dir:
+        file_name = ''.join(['L', str(lattice_length),
+                             'Tred', str(red_temperature),
+                             'h', str(emf),
+                             'J', str(interaction),
+                             'K', str(mcss),
+                             'm', str(magetization0),
+                             algorithm,
+                             ' magnetization'])
+        file_path = ''.join([save_magnetization_dir, file_name, ' (1)'])
+        file_name_counter = 1
+        while os.path.isfile(file_path):
+            file_name_counter += 1
+            file_path = ''.join([save_magnetization_dir, file_name, ' (', str(file_name_counter), ')'])
+        with open(file_path, 'w', encoding='UTF-8') as file:
+            for m in magnetization:
+                file.write(str(m) + '\n')
+            file.close()
