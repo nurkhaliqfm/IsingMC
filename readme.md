@@ -24,7 +24,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
 `--length <int>`</br>
 <div>
   <ul>
-    A length L=<int> of the lattice LxL in the system of spins.</br>
+    A length L=<code>&lt;int&gt;</code> of the lattice LxL in the system of spins.</br>
     The default is 10.
   </ul>
 </div>
@@ -34,7 +34,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
 `--temperature-reduced <float>`</br>
 <div>
   <ul>
-    Reduced temperature T* = <float> of the system, where T*=1/(J x Beta).</br>
+    Reduced temperature T*=<code>&lt;float&gt;</code> of the system, where T*=1/(J x Beta).</br>
     The default is 1.0.
   </ul>
 </div>
@@ -44,7 +44,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
 `--external-magnetic-field <float>`</br>
 <div>
   <ul>
-    External homogenious magnetic field h = <float> of the system.</br>
+    External homogenious magnetic field h=<code>&lt;float&gt;</code> of the system.</br>
     The default is 0.0.
   </ul>
 </div>
@@ -55,7 +55,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
 `--interaction <float>`</br>
 <div>
   <ul>
-    Interaction J = <float> between a pair of spins.</br>
+    Interaction J=<code>&lt;float&gt;</code> between a pair of spins.</br>
     The default is 1.0.
   </ul>
 </div>
@@ -66,7 +66,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
 `--steps <int>`</br>
 <div>
   <ul>
-    Number of desired MCSs (iterations) K == <int>.</br>
+    Number of desired MCSs (iterations) K==<code>&lt;int&gt;</code>.</br>
     The default is 1.
   </ul>
 </div>
@@ -77,8 +77,8 @@ This program provides Monte Carlo simulations of 2D Ising model.
 `--initial-magnetization <float>`</br>
 <div>
   <ul>
-    Initiated magnetization m = <float>.</br>
-    The default is 0.0
+    Initiated magnetization m(t=0)=<code>&lt;float&gt;</code>.</br>
+    The default is 0.0.
   </ul>
 </div>
 
@@ -87,9 +87,13 @@ This program provides Monte Carlo simulations of 2D Ising model.
 `--algorithm <string>`</br>
 <div>
   <ul>
-    An algorithm used by the Monte Carlo method to computing evolution of the system. Avaliable algorithms:
-        <string> == 'metropolis'
-        <string> == 'glauberg'
+    An algorithm used by the Monte Carlo method to computing evolution of the system. Avaliable algorithms:</br>
+        <div>
+        <ul>
+            <code>&lt;string&gt;</code>=='metropolis'</br>
+            <code>&lt;string&gt;</code>=='glauberg'
+        </ul>
+        </div>
     The default is 'glauber'.
   </ul>
 </div>
@@ -99,7 +103,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
 `--animation [<char><char>]`</br>
 <div>
   <ul>
-    Turns on the visual evolution of the system. <char><char> is a pair of characters that represents spin "up" and spin "down". The total time of execution will increase. Works only on Windows OS.</br>
+    Turns on the visual evolution of the system. <code>&lt;char&gt;</code><code>&lt;char&gt;</code> is a pair of characters that represents spin "up" and spin "down". The total time of execution will increase. Works only on Windows OS.</br>
     The default pair is U+0020, U+2588.
   </ul>
 </div>
@@ -109,7 +113,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
 `--save-configuration [<path>]`</br>
 <div>
   <ul>
-    At the end of the simulation the configuration of spins S[ij] will be saved in a given directory <path>.</br>
+    At the end of the simulation the configuration of spins S[ij] will be saved in a given directory <code>&lt;path&gt;</code>.</br>
     The dafault is "./".
   </ul>
 </div>
@@ -119,7 +123,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
 `--save-magnetization [<path>]`</br>
 <div>
   <ul>
-    At the end of the simulation the time-dependent evolution of magnetization m(t) [MCS] of the system will be saved in a given directory <path>.</br>
+    At the end of the simulation the time-dependent evolution of magnetization m(t) [MCS] of the system will be saved in a given directory <code>&lt;path&gt;</code>.</br>
     The dafault is "./" (the path of this module).
   </ul>
 </div>
