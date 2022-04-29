@@ -146,7 +146,7 @@ def mcss_from(argv: list[str]) -> int:
 
 def initial_magnetization_from(argv: list[str]) -> str:
     "Returns the given value of initial magnetization in the system."
-    args = ['-m0', 'm', '--initial-magnetization']
+    args = ['-m0', '--initial-magnetization']
 
     value = 0.0
     try:
@@ -223,3 +223,74 @@ def save_magnetization_path_from(argv: list[str]) -> str:
             return '.\\'
 
     return value
+
+DOCS = """
+ABOUT
+The program provides Monte Carlo simulations of 2D Ising model.
+
+EVOKE
+py main.py [-s|--seed <int>] [-L|--length <int>] [-T*|--temperature-reduced <float>] [-h|--external-magnetic-field <float>] [-J|--J|--interaction <float>] [-K|--K|--steps <int>] [-m|-m0|--initial-magnetization <float>] [-alg|--algorithm <string>] [-a|--animation [<char><char>]] [-sc|--save-configuration [<path>]] [-sm|--save-magnetization [<path>]]
+
+DESCRIPTION
+-s <int>
+--seed <int>
+    A seed <int> for the random number generator in module "random".
+    The default is 1997.
+
+-L <int>
+--length <int>
+    A length L=<int> of the lattice LxL in the system of spins.
+    The default is 10.
+
+-T* <float>
+--temperature-reduced <float>
+    Reduced temperature T* = <float> of the system, where T*=1/(J x Beta).
+    The default is 1.0.
+
+-h <float>
+--external-magnetic-field <float>
+    External homogenious magnetic field h = <float> of the system.
+    The default is 0.0.
+
+-J <float>
+--J <float>
+--interaction <float>
+    Interaction J = <float> between a pair of spins.
+    The default is 1.0.
+
+-K <int>
+--K <int>
+--steps <int>
+    Number of desired MCSs (iterations) K == <int>.
+    The default is 1.
+
+-m0 <float>
+--initial-magnetization <float>
+    Initiated magnetization m = <float>.
+    The default is 0.0
+
+-alg <string>
+--algorithm <string>
+    An algorithm used by the Monte Carlo method to computing evolution of the system. Avaliable algorithms:
+        <string> == 'metropolis'
+        <string> == 'glauberg'
+    The default is 'glauber'.
+
+-a [<char><char>]
+--animation [<char><char>]
+    Turns on the visual evolution of the system. <char><char> is a pair of characters that represents spin "up" and spin "down". The total time of execution will increase. Works only on Windows OS.
+    The default pair is U+0020, U+2588.
+
+-sc [<path>]
+--save-configuration [<path>]
+    At the end of the simulation the configuration of spins S[ij] will be saved in a given directory <path>.
+    The dafault is "./".
+
+-sm [<path>]
+--save-magnetization [<path>]
+    At the end of the simulation the time-dependent evolution of magnetization m(t) [MCS] of the system will be saved in a given directory <path>. 
+    The dafault is "./" (the path of this module).
+
+AUTHOR
+Wojciech Rożek
+"""

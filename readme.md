@@ -77,7 +77,6 @@ The program provides Monte Carlo simulations of 2D Ising model.
 </div>
 </br>
 
-`-m <float>`</br>
 `-m0 <float>`</br>
 `--initial-magnetization <float>`</br>
 <div>

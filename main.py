@@ -39,7 +39,6 @@ DESCRIPTION
     Number of desired MCSs (iterations) K == <int>.
     The default is 1.
 
--m <float>
 -m0 <float>
 --initial-magnetization <float>
     Initiated magnetization m = <float>.
@@ -78,6 +77,10 @@ if __name__ == '__main__':
 
     argv = sys.argv
 
+    if '--help' in argv:
+        print(init.DOCS)
+        sys.exit()
+        
     seed = init.seed_from(argv)      # for random trajectories
     lattice_length = init.lattice_length_from(argv)      # length of the lattice
     red_temperature = init.reduced_temperature_from(argv)        # reduced temperature T*
