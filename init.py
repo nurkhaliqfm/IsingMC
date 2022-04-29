@@ -273,7 +273,7 @@ DESCRIPTION
 --algorithm <string>
     An algorithm used by the Monte Carlo method to computing evolution of the system. Avaliable algorithms:
         <string> == 'metropolis'
-        <string> == 'glauberg'
+        <string> == 'glauber'
     The default is 'glauber'.
 
 -a [<char><char>]
@@ -292,7 +292,7 @@ DESCRIPTION
     The dafault is "./" (the path of this module).
 
 --help
-    Prints this text, without executing the program.
+    Prints that text, without executing the program.
 
 AUTHOR
 Wojciech Rożek

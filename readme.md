@@ -95,7 +95,7 @@ The program provides Monte Carlo simulations of 2D Ising model.
         <div>
         <ul>
             <code>&lt;string&gt;</code>=='metropolis'</br>
-            <code>&lt;string&gt;</code>=='glauberg'
+            <code>&lt;string&gt;</code>=='glauber'
         </ul>
         </div>
     The default is 'glauber'.
@@ -135,7 +135,7 @@ The program provides Monte Carlo simulations of 2D Ising model.
 `--help`</br>
 <div>
   <ul>
-    Prints this text, without executing the program.
+    Prints that text, without executing the program.
   </ul>
 </div>
     
