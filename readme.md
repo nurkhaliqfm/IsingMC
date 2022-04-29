@@ -132,6 +132,14 @@ The program provides Monte Carlo simulations of 2D Ising model.
   </ul>
 </div>
 
+`--help`</br>
+<div>
+  <ul>
+    Prints this text, without executing the program.
+  </ul>
+</div>
+    
+    
 ## REQUIREMENTS
 
     Python >= 3.10.2

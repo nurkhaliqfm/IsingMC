@@ -291,6 +291,9 @@ DESCRIPTION
     At the end of the simulation the time-dependent evolution of magnetization m(t) [MCS] of the system will be saved in a given directory <path>. 
     The dafault is "./" (the path of this module).
 
+--help
+    Prints this text, without executing the program.
+
 AUTHOR
 Wojciech Rożek
 """
