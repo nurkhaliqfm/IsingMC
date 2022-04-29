@@ -18,7 +18,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
     The default is 1997.
   </ul>
 </div>
-
+</br>
 
 `-L <int>`</br>
 `--length <int>`</br>
@@ -28,7 +28,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
     The default is 10.
   </ul>
 </div>
-
+</br>
 
 `-T* <float>`</br>
 `--temperature-reduced <float>`</br>
@@ -38,7 +38,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
     The default is 1.0.
   </ul>
 </div>
-
+</br>
 
 `-h <float>`</br>
 `--external-magnetic-field <float>`</br>
@@ -48,7 +48,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
     The default is 0.0.
   </ul>
 </div>
-
+</br>
 
 `-J <float>`</br>
 `--J <float>`</br>
@@ -59,7 +59,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
     The default is 1.0.
   </ul>
 </div>
-
+</br>
 
 `-K <int>`</br>
 `--K <int>`</br>
@@ -70,7 +70,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
     The default is 1.
   </ul>
 </div>
-
+</br>
 
 `-m <float>`</br>
 `-m0 <float>`</br>
@@ -81,7 +81,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
     The default is 0.0.
   </ul>
 </div>
-
+</br>
 
 `-alg <string>`</br>
 `--algorithm <string>`</br>
@@ -97,17 +97,17 @@ This program provides Monte Carlo simulations of 2D Ising model.
     The default is 'glauber'.
   </ul>
 </div>
-
+</br>
 
 `-a [<char><char>]`</br>
 `--animation [<char><char>]`</br>
 <div>
   <ul>
-    Turns on the visual evolution of the system. <code>&lt;char&gt;</code><code>&lt;char&gt;</code> is a pair of characters that represents spin "up" and spin "down". The total time of execution will increase. Works only on Windows OS.</br>
+    Turns on the visual evolution of the system. <code>&lt;char&gt;&lt;char&gt;</code> is a pair of characters that represents spin "up" and spin "down". The total time of execution will increase. Works only on Windows OS.</br>
     The default pair is U+0020, U+2588.
   </ul>
 </div>
-
+</br>
 
 `-sc [<path>]`</br>
 `--save-configuration [<path>]`</br>
@@ -117,7 +117,7 @@ This program provides Monte Carlo simulations of 2D Ising model.
     The dafault is "./".
   </ul>
 </div>
-
+</br>
 
 `-sm [<path>]`</br>
 `--save-magnetization [<path>]`</br>
@@ -128,8 +128,12 @@ This program provides Monte Carlo simulations of 2D Ising model.
   </ul>
 </div>
 
+## REQUIREMENTS
+
+    Python >= 3.10.2
+
 ## EXAMPLES
 
-    py main.py -L 40 -T* 2.26 -a
+    py main.py -L 40 -T* 2.26 -a -alg "metropolis"
     py main.py -L 30 -m 1.0 -sc
-    py main.py --seed 23 -K 3000 -sm
+    py main.py --seed 23 -K 3000 -sm "./data3/"

@@ -84,7 +84,7 @@ if __name__ == '__main__':
     emf = init.external_magnetic_field_from(argv)        # external magnetic field h
     interaction = init.interaction_from(argv)        # interaction parameter
     mcss = init.mcss_from(argv)    # number of Monte Carlo steps
-    magetization0 = init.initial_magnetization_from(argv)        # initial value of magnetization of the system
+    magnetization0 = init.initial_magnetization_from(argv)        # initial value of magnetization of the system
     algorithm = init.algorithm_from(argv)        # an algorithm for computing the Monte Carlo method
     animation = init.animation_markers_from(argv)        # markers for animating evolution of the system
     save_configuration_dir = init.save_configuration_path_from(argv)   # path to save final spins configuration
@@ -100,7 +100,7 @@ if __name__ == '__main__':
 
     # initializing a system of spins
     random.seed(seed)
-    up_probability = (magetization0 + 1)/2      # probability of initiation a spin as "up"
+    up_probability = (magnetization0 + 1)/2      # probability of initiation a spin as "up"
     config = [[generate_spin(up_probability) for column in range(0, lattice_length)] for row in range(0, lattice_length)]        # a lattice of spins
 
     # general processing
@@ -115,7 +115,7 @@ if __name__ == '__main__':
     else:
         if emf == 0.0:
             from kernel import mc_raw
-            lattice, magetization = mc_raw(config, mcss, red_temperature, beta, algorithm, seed)
+            lattice, magnetization = mc_raw(config, mcss, red_temperature, beta, algorithm, seed)
         else:
             from kernel import mc_h
             lattice, magnetization = mc_h(config, mcss, red_temperature, emf, beta, algorithm, seed)
@@ -127,7 +127,7 @@ if __name__ == '__main__':
                              'h', str(emf),
                              'J', str(interaction),
                              'K', str(mcss),
-                             'm', str(magetization0),
+                             'm', str(magnetization0),
                              algorithm,
                              ' configuration'])
         file_path = save_configuration_dir + file_name + ' (1)'
@@ -152,7 +152,7 @@ if __name__ == '__main__':
                              'h', str(emf),
                              'J', str(interaction),
                              'K', str(mcss),
-                             'm', str(magetization0),
+                             'm', str(magnetization0),
                              algorithm,
                              ' magnetization'])
         file_path = ''.join([save_magnetization_dir, file_name, ' (1)'])
