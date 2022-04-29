@@ -1,9 +1,13 @@
 
-<h1 style="text-align: center;"><strong>Ising Model Monte Carlo</strong></h>
+<h1 align="center"><strong>Ising Model Monte Carlo</strong></h>
+
+</br>
+
+![](IsingMCgif.gif)
 
 ## ABOUT
 
-This program provides Monte Carlo simulations of 2D Ising model.
+The program provides Monte Carlo simulations of 2D Ising model.
 
 ## CLI
 
