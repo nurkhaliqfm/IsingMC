@@ -108,7 +108,7 @@ The program provides Monte Carlo simulations of 2D Ising model.
 `--animation [<char><char>]`</br>
 <div>
   <ul>
-    Turns on the visual evolution of the system. <code>&lt;char&gt;&lt;char&gt;</code> is a pair of characters that represents spin "up" and spin "down". The total time of execution will increase. Works only on Windows OS.</br>
+    Turns on the visual evolution of the system. <code>&lt;char&gt;&lt;char&gt;</code> is a pair of characters that represents spin "up" and spin "down". The total time of execution will increase.</br>
     The default pair is U+0020, U+2588.
   </ul>
 </div>
