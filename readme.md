@@ -1,6 +1,7 @@
 
-<h1 align="center"><strong>Ising Model Monte Carlo</strong></h>
+<h1 align="center"><strong>Monte Carlo simulations of Ising Model</strong></h>
 
+</br>
 </br>
 
 ![](IsingMCgif.gif)
