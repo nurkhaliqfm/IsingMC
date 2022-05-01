@@ -1,5 +1,5 @@
 """
-The module provides a set of functions to initialize parameters.
+The module provide a set of functions to initialize parameters.
 """
 FLAGS =  [
         '-s', '--seed',
@@ -9,8 +9,8 @@ FLAGS =  [
         '-J', '--J', '--interaction',
         '-K', '--K', '--steps',
         '-m0', '--initial-magnetization',
-        '-alg', '--algorithm',
-        '-a', '--animation',
+        '-a', '--algorithm',
+        '-v', '--visualization',
         '-sc', '--save-configuration',
         '-sm', '--save-magnetization'
         ]
@@ -181,9 +181,9 @@ def algorithm_from(argv: list[str]) -> str:
         return value
     raise ValueError('the choosen algorithm must be \'metropolis\' or \'glauber\'')
 
-def animation_markers_from(argv: list[str]) -> tuple[str]:
-    "This function optionally returns the given markers for displaying an animation of evolution in the system."
-    args = ['-a', '--animation']
+def visualization_markers_from(argv: list[str]) -> tuple[str]:
+    "This function optionally returns the given markers for displaying an visualization of evolution in the system."
+    args = ['-v', '--visualization']
 
     value = get_value(argv, args)
     if value:
@@ -226,31 +226,26 @@ def save_magnetization_path_from(argv: list[str]) -> str:
 
 DOCS = """
 ABOUT
-The program provides Monte Carlo simulations of 2D Ising model.
+The program provide Monte Carlo simulations of 2D Ising model.
 
 EVOKE
-py main.py [-s|--seed <int>] [-L|--length <int>] [-T*|--temperature-reduced <float>] [-h|--external-magnetic-field <float>] [-J|--J|--interaction <float>] [-K|--K|--steps <int>] [-m|-m0|--initial-magnetization <float>] [-alg|--algorithm <string>] [-a|--animation [<char><char>]] [-sc|--save-configuration [<path>]] [-sm|--save-magnetization [<path>]]
+py main.py [-a|--algorithm <string>] [-h|--external-magnetic-field <float>] [--help] [-J|--J|--interaction <float>] [-K|--K|--steps <int>] [-L|--length <int>] [-m|-m0|--initial-magnetization <float>] [-s|--seed <int>] [-sc|--save-configuration [<path>]] [-sm|--save-magnetization [<path>]] [-T*|--temperature-reduced <float>] [-v|--visualization [<char><char>]]
 
 DESCRIPTION
--s <int>
---seed <int>
-    A seed <int> for the random number generator in module "random".
-    The default is 1997.
-
--L <int>
---length <int>
-    A length L=<int> of the lattice LxL in the system of spins.
-    The default is 10.
-
--T* <float>
---temperature-reduced <float>
-    Reduced temperature T* = <float> of the system, where T*=1/(J x Beta).
-    The default is 1.0.
+-a <string>
+--algorithm <string>
+    An algorithm used by the Monte Carlo method to computing evolution of the system. Avaliable algorithms:
+        <string> == 'metropolis'
+        <string> == 'glauber'
+    The default is 'glauber'.
 
 -h <float>
 --external-magnetic-field <float>
     External homogenious magnetic field h = <float> of the system.
     The default is 0.0.
+
+--help
+    Prints that text, without executing the program.
 
 -J <float>
 --J <float>
@@ -264,22 +259,20 @@ DESCRIPTION
     Number of desired MCSs (iterations) K == <int>.
     The default is 1.
 
+-L <int>
+--length <int>
+    A length L=<int> of the lattice LxL in the system of spins.
+    The default is 10.
+
 -m0 <float>
 --initial-magnetization <float>
     Initiated magnetization m = <float>.
     The default is 0.0
 
--alg <string>
---algorithm <string>
-    An algorithm used by the Monte Carlo method to computing evolution of the system. Avaliable algorithms:
-        <string> == 'metropolis'
-        <string> == 'glauber'
-    The default is 'glauber'.
-
--a [<char><char>]
---animation [<char><char>]
-    Turns on the visual evolution of the system. <char><char> is a pair of characters that represents spin "up" and spin "down". The total time of execution will increase. Works only on Windows OS.
-    The default pair is U+0020, U+2588.
+-s <int>
+--seed <int>
+    A seed <int> for the random number generator in module "random".
+    The default is 1997.
 
 -sc [<path>]
 --save-configuration [<path>]
@@ -291,8 +284,15 @@ DESCRIPTION
     At the end of the simulation the time-dependent evolution of magnetization m(t) [MCS] of the system will be saved in a given directory <path>. 
     The dafault is "./" (the path of this module).
 
---help
-    Prints that text, without executing the program.
+-T* <float>
+--temperature-reduced <float>
+    Reduced temperature T* = <float> of the system, where T*=1/(J x Beta).
+    The default is 1.0.
+
+-v [<char><char>]
+--visualization [<char><char>]
+    Turns on the visual evolution of the system. <char><char> is a pair of characters that represents spin "up" and spin "down". The total time of execution will increase. Works only on Windows OS.
+    The default pair is U+0020, U+2588.
 
 AUTHOR
 Wojciech Rożek

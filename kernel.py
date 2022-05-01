@@ -32,7 +32,7 @@ def set_condition(algorithm: str) -> Callable[[float, float], float]:
             return lambda x, y: exp(-x*y)
 
 def chose_print_function(lattice_length: int) -> Callable[[list[list[int]], str, str], None]:
-    "Returns an essential function for displaying the animation."
+    "Returns an essential function for displaying the visualization."
 
     match pl_sys():
         case 'Windows':
@@ -193,9 +193,9 @@ def mc_h(configuration: list[list[int]], monte_carlo_steps: int, reduced_tempera
 
     return configuration, mag
 
-def mc_a(configuration: list[list[int]], monte_carlo_steps: int, reduced_temperature: float, beta: float, algorithm: str, seed: int, animation_markers: tuple[str, str]) -> tuple[list[list[int]], list[float]]:
+def mc_v(configuration: list[list[int]], monte_carlo_steps: int, reduced_temperature: float, beta: float, algorithm: str, seed: int, visualization_markers: tuple[str, str]) -> tuple[list[list[int]], list[float]]:
     """
-    A Monte Carlo method on the Glauber algorithm with animation.
+    A Monte Carlo method on the Glauber algorithm with visualization.
 
     ### Parameters
     configuration
@@ -216,7 +216,7 @@ def mc_a(configuration: list[list[int]], monte_carlo_steps: int, reduced_tempera
     seed
     int
         For generatng random numbers.
-    animation_markers
+    visualization_markers
     tuple[str, str]
         A pair of markers used for denote "up" spins and "down" spins.
 
@@ -234,8 +234,8 @@ def mc_a(configuration: list[list[int]], monte_carlo_steps: int, reduced_tempera
 
     mag = [magnetization(nodes_number, configuration)]      # initial state of magnetization
 
-    am_up   = animation_markers[0]     # marker of spins "up"
-    am_down = animation_markers[1]     # marker of spins "down"
+    am_up   = visualization_markers[0]     # marker of spins "up"
+    am_down = visualization_markers[1]     # marker of spins "down"
 
     print_function = chose_print_function(lattice_length)
     print_function(configuration, am_up, am_down)
@@ -261,9 +261,9 @@ def mc_a(configuration: list[list[int]], monte_carlo_steps: int, reduced_tempera
 
     return configuration, mag  
 
-def mc_h_a(configuration: list[list[int]], monte_carlo_steps: int, reduced_temperature: float, external_magnetic_field: float, beta: float, algorithm: str, seed: int, animation_markers: tuple[str, str]) -> tuple[list[list[int]], list[float]]:
+def mc_h_v(configuration: list[list[int]], monte_carlo_steps: int, reduced_temperature: float, external_magnetic_field: float, beta: float, algorithm: str, seed: int, visualization_markers: tuple[str, str]) -> tuple[list[list[int]], list[float]]:
     """
-    A Monte Carlo method with animation and external magnetic.
+    A Monte Carlo method with visualization and external magnetic.
 
     ### Parameters
     configuration
@@ -287,7 +287,7 @@ def mc_h_a(configuration: list[list[int]], monte_carlo_steps: int, reduced_tempe
     seed
     int
         For generatng random numbers.
-    animation_markers
+    visualization_markers
     tuple[str, str]
         A pair of markers used for denote "up" spins and "down" spins.
 
@@ -305,8 +305,8 @@ def mc_h_a(configuration: list[list[int]], monte_carlo_steps: int, reduced_tempe
     
     mag = [magnetization(nodes_number, configuration)]      # initial state of magnetization
 
-    am_up   = animation_markers[0]     # marker of spins "up"
-    am_down = animation_markers[1]     # marker of spins "down"
+    am_up   = visualization_markers[0]     # marker of spins "up"
+    am_down = visualization_markers[1]     # marker of spins "down"
 
     print_function = chose_print_function(lattice_length)
     print_function(configuration, am_up, am_down)
