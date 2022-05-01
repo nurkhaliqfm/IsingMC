@@ -8,7 +8,7 @@ FLAGS =  [
         '-h', '--external-magnetic-field',
         '-J', '--J', '--interaction',
         '-K', '--K', '--steps',
-        '-m0', '-m', '--initial-magnetization',
+        '-m0', '--initial-magnetization',
         '-alg', '--algorithm',
         '-a', '--animation',
         '-sc', '--save-configuration',
