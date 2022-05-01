@@ -84,19 +84,19 @@ if __name__ == '__main__':
         print(init.DOCS)
         sys.exit()
         
-    seed = init.seed_from(argv)      # for random trajectories
-    lattice_length = init.lattice_length_from(argv)      # length of the lattice
-    red_temperature = init.reduced_temperature_from(argv)        # reduced temperature T*
-    emf = init.external_magnetic_field_from(argv)        # external magnetic field h
-    interaction = init.interaction_from(argv)        # interaction parameter
-    mcss = init.mcss_from(argv)    # number of Monte Carlo steps
-    magnetization0 = init.initial_magnetization_from(argv)        # initial value of magnetization of the system
-    algorithm = init.algorithm_from(argv)        # an algorithm for computing the Monte Carlo method
-    animation = init.animation_markers_from(argv)        # markers for animating evolution of the system
-    save_configuration_dir = init.save_configuration_path_from(argv)   # path to save final spins configuration
-    save_magnetization_dir = init.save_magnetization_path_from(argv)   # path to save magnetization
+    seed = init.seed_from(argv)                                         # for random trajectories
+    lattice_length = init.lattice_length_from(argv)                     # length of the lattice
+    red_temperature = init.reduced_temperature_from(argv)               # reduced temperature T*
+    emf = init.external_magnetic_field_from(argv)                       # external magnetic field h
+    interaction = init.interaction_from(argv)                           # interaction parameter
+    mcss = init.mcss_from(argv)                                         # number of Monte Carlo steps
+    magnetization0 = init.initial_magnetization_from(argv)              # initial value of magnetization of the system
+    algorithm = init.algorithm_from(argv)                               # an algorithm for computing the Monte Carlo method
+    animation = init.animation_markers_from(argv)                       # markers for animating evolution of the system
+    save_configuration_dir = init.save_configuration_path_from(argv)    # path to save final spins configuration
+    save_magnetization_dir = init.save_magnetization_path_from(argv)    # path to save magnetization
 
-    beta = 1/interaction/red_temperature     # 1/(k_BT)
+    beta = 1/interaction/red_temperature            # 1/(k_BT)
 
     def generate_spin(probability: float) -> int:
         "Return a spin 'up' with the given probability."
@@ -106,8 +106,8 @@ if __name__ == '__main__':
 
     # initializing a system of spins
     random.seed(seed)
-    up_probability = (magnetization0 + 1)/2      # probability of initiation a spin as "up"
-    config = [[generate_spin(up_probability) for column in range(0, lattice_length)] for row in range(0, lattice_length)]        # a lattice of spins
+    up_probability = (magnetization0 + 1)/2                                                                                     # probability of initiation a spin as "up"
+    config = [[generate_spin(up_probability) for column in range(0, lattice_length)] for row in range(0, lattice_length)]       # a lattice of spins
 
     # general processing
     magnetization = ...
@@ -136,7 +136,7 @@ if __name__ == '__main__':
                              'm', str(magnetization0),
                              algorithm,
                              ' configuration'])
-        file_path = save_configuration_dir + file_name + ' (1)'
+        file_path = "".join([save_configuration_dir, file_name, ' (1)'])
         file_name_counter = 1
         while os.path.isfile(file_path):
             file_name_counter += 1
