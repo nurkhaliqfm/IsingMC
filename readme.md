@@ -148,5 +148,5 @@ The program provide Monte Carlo simulations of 2D Ising model.
 ## EXAMPLES
 
     py main.py -L 40 -T* 2.26 -v -a "metropolis"
-    py main.py -L 30 -m 1.0 -sc
+    py main.py -L 30 -m0 1.0 -sc
     py main.py --seed 23 -K 3000 -sm "./data3/"
