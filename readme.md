@@ -49,6 +49,7 @@ The program provide Monte Carlo simulations of 2D Ising model.
     Prints that text, without executing the program.
   </ul>
 </div>
+</br>
 
 `-J <float>`</br>
 `--J <float>`</br>
