@@ -4,7 +4,7 @@
 </br>
 </br>
 
-![](IsingMCgif.gif)
+![](evolution.gif)
 
 ## ABOUT
 
@@ -121,6 +121,7 @@ The program provide Monte Carlo simulations of 2D Ising model.
     The dafault is "./" (the path of this module).
   </ul>
 </div>
+</br>
 
 `-T* <float>`</br>
 `--temperature-reduced <float>`</br>
