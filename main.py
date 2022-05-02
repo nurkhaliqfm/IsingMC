@@ -66,7 +66,7 @@ DESCRIPTION
 
 -v [<char><char>]
 --visualization [<char><char>]
-    Turns on the visual evolution of the system. <char><char> is a pair of characters that represents spin "up" and spin "down". The total time of execution will increase. Works only on Windows OS.
+    Turns on the visual evolution of the system. <char><char> is a pair of characters that represents spin "up" and spin "down". The total time of execution will increase.
     The default pair is U+0020, U+2588.
 """
 if __name__ == '__main__':
