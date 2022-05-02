@@ -6,7 +6,7 @@
 
 ![](evolution.gif)
 
-![](magnetizations.svg)
+![](magnetization.svg)
 
 ## ABOUT
 
