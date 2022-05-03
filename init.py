@@ -129,7 +129,7 @@ def mcss_from(argv: list[str]) -> int:
     "Returns the given number of MCSs."
     args = ['-K', '--K', '--steps']
 
-    value = 1
+    value = 500
     try:
         value = int(get_value(argv, args))
     except ValueError as exc:
@@ -257,7 +257,7 @@ DESCRIPTION
 --K <int>
 --steps <int>
     Number of desired MCSs (iterations) K == <int>.
-    The default is 1.
+    The default is 500.
 
 -L <int>
 --length <int>

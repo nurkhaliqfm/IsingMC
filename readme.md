@@ -70,7 +70,7 @@ The program provide Monte Carlo simulations of 2D Ising model.
 <div>
   <ul>
     Number of desired MCSs (iterations) K==<code>&lt;int&gt;</code>.</br>
-    The default is 1.
+    The default is 500.
   </ul>
 </div>
 </br>
