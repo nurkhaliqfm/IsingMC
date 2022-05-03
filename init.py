@@ -59,7 +59,7 @@ def lattice_length_from(argv: list[str]) -> int:
     "Returns the given length L of the lattice of spins L x L."
     args = ['-L', '--length']       # appropriate arguments
 
-    value = 10
+    value = 40
     try:
         value = int(get_value(argv, args))
     except ValueError as exc:
@@ -262,7 +262,7 @@ DESCRIPTION
 -L <int>
 --length <int>
     A length L=<int> of the lattice LxL in the system of spins.
-    The default is 10.
+    The default is 40.
 
 -m0 <float>
 --initial-magnetization <float>

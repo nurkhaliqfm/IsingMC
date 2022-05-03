@@ -80,7 +80,7 @@ The program provide Monte Carlo simulations of 2D Ising model.
 <div>
   <ul>
     A length L=<code>&lt;int&gt;</code> of the lattice LxL in the system of spins.</br>
-    The default is 10.
+    The default is 40.
   </ul>
 </div>
 </br>

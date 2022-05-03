@@ -37,7 +37,7 @@ DESCRIPTION
 -L <int>
 --length <int>
     A length L=<int> of the lattice LxL in the system of spins.
-    The default is 10.
+    The default is 40.
 
 -m0 <float>
 --initial-magnetization <float>
