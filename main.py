@@ -32,7 +32,7 @@ DESCRIPTION
 --K <int>
 --steps <int>
     Number of desired MCSs (iterations) K == <int>.
-    The default is 500.
+    The default is 400.
 
 -L <int>
 --length <int>
