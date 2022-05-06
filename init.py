@@ -228,7 +228,7 @@ DOCS = """
 ABOUT
 The program provide Monte Carlo simulations of 2D Ising model.
 
-COMMAND LINE NTERFACE
+EVOKE
 py main.py [-a|--algorithm <string>] [-h|--external-magnetic-field <float>] [--help] [-J|--J|--interaction <float>] [-K|--K|--steps <int>] [-L|--length <int>] [-m|-m0|--initial-magnetization <float>] [-s|--seed <int>] [-sc|--save-configuration [<path>]] [-sm|--save-magnetization [<path>]] [-T*|--temperature-reduced <float>] [-v|--visualization [<char><char>]]
 
 DESCRIPTION
