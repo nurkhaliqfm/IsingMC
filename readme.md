@@ -4,7 +4,7 @@
 </br>
 </br>
 
-![](evolution.gif)
+![](progress.gif)
 
 ![](magnetization.svg)
 
