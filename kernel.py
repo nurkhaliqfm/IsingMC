@@ -365,3 +365,4 @@ def mc_h_v(configuration: list[list[int]],
         print_function(configuration, am_up, am_down)
 
     return configuration, mag
+    

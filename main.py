@@ -167,7 +167,9 @@ if __name__ == '__main__':
         file_name_counter = 1
         while os.path.isfile(file_path):
             file_name_counter += 1
-            file_path = ''.join([save_configuration_dir, file_name, ' (', str(file_name_counter), ')'])
+            file_path = ''.join([save_configuration_dir,
+                                 file_name,
+                                 ' (', str(file_name_counter), ')'])
         with open(file_path, 'w', encoding='UTF-8') as file:
             for row in config:
                 for spin in row:
@@ -192,7 +194,9 @@ if __name__ == '__main__':
         file_name_counter = 1
         while os.path.isfile(file_path):
             file_name_counter += 1
-            file_path = ''.join([save_magnetization_dir, file_name, ' (', str(file_name_counter), ')'])
+            file_path = ''.join([save_magnetization_dir,
+                                 file_name,
+                                 ' (', str(file_name_counter), ')'])
         with open(file_path, 'w', encoding='UTF-8') as file:
             for m in magnetization:
                 file.write(str(m) + '\n')

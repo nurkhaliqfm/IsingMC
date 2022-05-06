@@ -1,5 +1,5 @@
 
-<h1 align="center"><strong>Monte Carlo simulations of an Ising Model</strong></h>
+<h1 align="center"><strong>Monte Carlo simulations of Ising Model</strong></h>
 
 </br>
 </br>
