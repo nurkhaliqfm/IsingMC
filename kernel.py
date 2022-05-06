@@ -33,7 +33,6 @@ def set_condition(algorithm: str) -> Callable[[float, float], float]:
 
 def chose_print_function(lattice_length: int) -> Callable[[list[list[int]], str, str], None]:
     """Returns an essential function for displaying the visualization."""
-
     match pl_sys():
         case 'Windows':
             os.system(''.join(['MODE ', str(lattice_length), ',', str(lattice_length)]))  # resizing the window

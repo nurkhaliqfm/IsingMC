@@ -81,6 +81,7 @@ if __name__ == '__main__':
         print(init.DOCS)
         sys.exit()
         
+    # initializing parameters
     seed = init.seed_from(argv)                                         # for random trajectories
     lattice_length = init.lattice_length_from(argv)                     # length of the lattice
     red_temperature = init.reduced_temperature_from(argv)               # reduced temperature T*
