@@ -9,7 +9,7 @@ from typing import Callable
 
 
 def magnetization(number_nodes: int, lattice: list[list[int]]) -> float:
-    "Returns magnetization of a system."
+    """Returns magnetization of a system."""
     return 1/number_nodes*sum([sum(row) for row in lattice])
 
 def set_condition(algorithm: str) -> Callable[[float, float], float]:
@@ -32,7 +32,7 @@ def set_condition(algorithm: str) -> Callable[[float, float], float]:
             return lambda x, y: exp(-x*y)
 
 def chose_print_function(lattice_length: int) -> Callable[[list[list[int]], str, str], None]:
-    "Returns an essential function for displaying the visualization."
+    """Returns an essential function for displaying the visualization."""
 
     match pl_sys():
         case 'Windows':
@@ -44,8 +44,11 @@ def chose_print_function(lattice_length: int) -> Callable[[list[list[int]], str,
         case _:
             return print_configuration_empty
 
-def print_configuration_powershell(configuration_spins: list[list[int]], marker_up: str, marker_down: str) -> None:
-    "Prints given configuration of spins."
+def print_configuration_powershell(configuration_spins: list[list[int]],
+                                   marker_up: str,
+                                   marker_down: str
+                                  ) -> None:
+    """Prints given configuration of spins."""
     configuration = ""
     for row in configuration_spins:
         for spin in row:
@@ -56,8 +59,11 @@ def print_configuration_powershell(configuration_spins: list[list[int]], marker_
     os.system('cls')
     print(configuration)
 
-def print_configuration_bash(configuration_spins: list[list[int]], marker_up: str, marker_down: str) -> None:
-    "Prints given configuration of spins."
+def print_configuration_bash(configuration_spins: list[list[int]],
+                             marker_up: str,
+                             marker_down: str
+                            ) -> None:
+    """Prints given configuration of spins."""
     configuration = ""
     for row in configuration_spins:
         for spin in row:
@@ -69,9 +75,15 @@ def print_configuration_bash(configuration_spins: list[list[int]], marker_up: st
     print(configuration)
 
 def print_configuration_empty() -> None:
-    "An empty function."
+    """An empty function."""
 
-def mc_raw(configuration: list[list[int]], monte_carlo_steps: int, reduced_temperature: float, beta: float, algorithm: str, seed: int) -> tuple[list[list[int]], list[float]]:
+def mc_raw(configuration: list[list[int]],
+           monte_carlo_steps: int,
+           reduced_temperature: float,
+           beta: float,
+           algorithm: str,
+           seed: int
+          ) -> tuple[list[list[int]], list[float]]:
     """
     A raw Monte Carlo method.
 
@@ -131,7 +143,14 @@ def mc_raw(configuration: list[list[int]], monte_carlo_steps: int, reduced_tempe
     return configuration, mag
 
 
-def mc_h(configuration: list[list[int]], monte_carlo_steps: int, reduced_temperature: float, external_magnetic_field: float, beta: float, algorithm: str, seed: int) -> tuple[list[list[int]], list[float]]:
+def mc_h(configuration: list[list[int]],
+         monte_carlo_steps: int,
+         reduced_temperature: float,
+         external_magnetic_field: float,
+         beta: float,
+         algorithm: str,
+         seed: int
+        ) -> tuple[list[list[int]], list[float]]:
     """
     A Monte Carlo method with incorporated external magnetic field.
 
@@ -193,7 +212,14 @@ def mc_h(configuration: list[list[int]], monte_carlo_steps: int, reduced_tempera
 
     return configuration, mag
 
-def mc_v(configuration: list[list[int]], monte_carlo_steps: int, reduced_temperature: float, beta: float, algorithm: str, seed: int, visualization_markers: tuple[str, str]) -> tuple[list[list[int]], list[float]]:
+def mc_v(configuration: list[list[int]],
+         monte_carlo_steps: int,
+         reduced_temperature: float,
+         beta: float,
+         algorithm: str,
+         seed: int,
+         visualization_markers: tuple[str, str]
+        ) -> tuple[list[list[int]], list[float]]:
     """
     A Monte Carlo method on the Glauber algorithm with visualization.
 
@@ -261,7 +287,15 @@ def mc_v(configuration: list[list[int]], monte_carlo_steps: int, reduced_tempera
 
     return configuration, mag  
 
-def mc_h_v(configuration: list[list[int]], monte_carlo_steps: int, reduced_temperature: float, external_magnetic_field: float, beta: float, algorithm: str, seed: int, visualization_markers: tuple[str, str]) -> tuple[list[list[int]], list[float]]:
+def mc_h_v(configuration: list[list[int]],
+           monte_carlo_steps: int,
+           reduced_temperature: float,
+           external_magnetic_field: float,
+           beta: float,
+           algorithm: str,
+           seed: int,
+           visualization_markers: tuple[str, str]
+          ) -> tuple[list[list[int]], list[float]]:
     """
     A Monte Carlo method with visualization and external magnetic.
 

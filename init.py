@@ -16,7 +16,7 @@ FLAGS =  [
         ]
 
 def get_value(argv: list[str], args: list[str]):
-    "Checks if an any argument from the list Args were given in the list Argv and returns it is value or None object."
+    """Checks if an any argument from the list Args were given in the list Argv and returns it is value or None object."""
     index = None        # index of an appropriate argument in the list argv
 
     for arg in args:
@@ -40,7 +40,7 @@ def get_value(argv: list[str], args: list[str]):
     return None
 
 def seed_from(argv: list[str]) -> int:
-    "Returns the given random seed form the command line."
+    """Returns the given random seed form the command line."""
     args = ['-s', '--seed']     # appropriate arguments
 
     value = 1997        # the default value
@@ -56,7 +56,7 @@ def seed_from(argv: list[str]) -> int:
     return value
 
 def lattice_length_from(argv: list[str]) -> int:
-    "Returns the given length L of the lattice of spins L x L."
+    """Returns the given length L of the lattice of spins L x L."""
     args = ['-L', '--length']       # appropriate arguments
 
     value = 40
@@ -75,7 +75,7 @@ def lattice_length_from(argv: list[str]) -> int:
     return value
 
 def reduced_temperature_from(argv: list[str]) -> float:
-    "Returns the given reduced temperature T*."
+    """Returns the given reduced temperature T*."""
     args = ['-T*', '--temperature-reduced']
 
     value = 1.0
@@ -94,7 +94,7 @@ def reduced_temperature_from(argv: list[str]) -> float:
     return value
 
 def external_magnetic_field_from(argv: list[str]) -> float:
-    "Returns the given value of an external magnetic field h in the system."
+    """Returns the given value of an external magnetic field h in the system."""
     args = ['-h', '--external-magnetic field']
 
     value = 0.0
@@ -110,7 +110,7 @@ def external_magnetic_field_from(argv: list[str]) -> float:
     return value
 
 def interaction_from(argv: list[str]) -> float:
-    "Returns the given interaction parameter J."
+    """Returns the given interaction parameter J."""
     args = ['-J', '--J', '--intercation']
 
     value = 1.0
@@ -126,7 +126,7 @@ def interaction_from(argv: list[str]) -> float:
     return value
 
 def mcss_from(argv: list[str]) -> int:
-    "Returns the given number of MCSs."
+    """Returns the given number of MCSs."""
     args = ['-K', '--K', '--steps']
 
     value = 400
@@ -145,7 +145,7 @@ def mcss_from(argv: list[str]) -> int:
     return value
 
 def initial_magnetization_from(argv: list[str]) -> str:
-    "Returns the given value of initial magnetization in the system."
+    """Returns the given value of initial magnetization in the system."""
     args = ['-m0', '--initial-magnetization']
 
     value = 0.0
@@ -164,7 +164,7 @@ def initial_magnetization_from(argv: list[str]) -> str:
     return value
 
 def algorithm_from(argv: list[str]) -> str:
-    "Returns the given name of choosen algorithm."
+    """Returns the given name of choosen algorithm."""
     args = ['-alg', '--algorithm']
 
     value = ...
@@ -182,7 +182,7 @@ def algorithm_from(argv: list[str]) -> str:
     raise ValueError('the choosen algorithm must be \'metropolis\' or \'glauber\'')
 
 def visualization_markers_from(argv: list[str]) -> tuple[str]:
-    "This function optionally returns the given markers for displaying an visualization of evolution in the system."
+    """This function optionally returns the given markers for displaying an visualization of evolution in the system."""
     args = ['-v', '--visualization']
 
     value = get_value(argv, args)
@@ -197,7 +197,7 @@ def visualization_markers_from(argv: list[str]) -> tuple[str]:
     return value
 
 def save_configuration_path_from(argv: list[str]) -> str:
-    "Returns the given path to save the final state of the system."
+    """Returns the given path to save the final state of the system."""
     args = ['-sc', '--save-configuration']
 
     value = get_value(argv, args)
@@ -211,7 +211,7 @@ def save_configuration_path_from(argv: list[str]) -> str:
     return value
 
 def save_magnetization_path_from(argv: list[str]) -> str:
-    "Returns the given path to save the evolution of magnetization in the system."
+    """Returns the given path to save the evolution of magnetization in the system."""
     args = ['-sm', '--save-magnetization']
 
     value = get_value(argv, args)

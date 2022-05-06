@@ -96,32 +96,61 @@ if __name__ == '__main__':
     beta = 1/interaction/red_temperature            # 1/(k_BT)
 
     def generate_spin(probability: float) -> int:
-        "Return a spin 'up' with the given probability."
+        """Return a spin 'up' with the given probability."""
         if random.random() <= probability:
             return 1
         return -1
 
     # initializing a system of spins
     random.seed(seed)
-    up_probability = (magnetization0 + 1)/2                                                                                     # probability of initiation a spin as "up"
-    config = [[generate_spin(up_probability) for column in range(0, lattice_length)] for row in range(0, lattice_length)]       # a lattice of spins
+    up_probability = (magnetization0 + 1)/2     # probability of initiation a spin as "up"
+
+    config = []                                 # a system of spins
+    for row in range(0, lattice_length):
+        config.append([])
+        for column in range(0, lattice_length):
+            config[-1].append(generate_spin(up_probability))
 
     # general processing
     magnetization = ...
     if visualization:
         if emf == 0.0:
             from kernel import mc_v
-            lattice, magnetization = mc_v(config, mcss, red_temperature, beta, algorithm, seed, visualization)
+            lattice, magnetization = mc_v(config,
+                                          mcss,
+                                          red_temperature,
+                                          beta,
+                                          algorithm,
+                                          seed,
+                                          visualization)
         else:
             from kernel import mc_h_v
-            lattice, magnetization = mc_h_v(config, mcss, red_temperature, emf, beta, algorithm, seed, visualization)
+            lattice, magnetization = mc_h_v(config,
+                                            mcss,
+                                            red_temperature,
+                                            emf,
+                                            beta,
+                                            algorithm,
+                                            seed,
+                                            visualization)
     else:
         if emf == 0.0:
             from kernel import mc_raw
-            lattice, magnetization = mc_raw(config, mcss, red_temperature, beta, algorithm, seed)
+            lattice, magnetization = mc_raw(config,
+                                            mcss,
+                                            red_temperature,
+                                            beta,
+                                            algorithm,
+                                            seed)
         else:
             from kernel import mc_h
-            lattice, magnetization = mc_h(config, mcss, red_temperature, emf, beta, algorithm, seed)
+            lattice, magnetization = mc_h(config,
+                                          mcss,
+                                          red_temperature,
+                                          emf,
+                                          beta,
+                                          algorithm,
+                                          seed)
 
     # saving the configuration of spins
     if save_configuration_dir:

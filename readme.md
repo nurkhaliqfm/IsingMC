@@ -154,3 +154,7 @@ The program provide Monte Carlo simulations of 2D Ising model.
     py main.py -T* 2.26 -a "metropolis" -v
     py main.py -L 30 -m0 1.0 -sc
     py main.py --seed 23 -K 3000 -sm "./data/"
+
+## DATASETS
+
+You can check out examples of generated data at https://www.kaggle.com/datasets/quantumbraindisorder/magnetization
