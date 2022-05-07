@@ -23,7 +23,7 @@ The program provide Monte Carlo simulations of 2D Ising model.
   <code>-a &lt;string&gt;</code></br>
   <code>--algorithm &lt;string&gt;</code></br>
   <ul>
-    An algorithm used by the Monte Carlo method to computing evolution of the system.</br> Avaliable algorithms: 'metropolis'; 'glauber'. </br>
+    An algorithm used by the Monte Carlo method to computing evolution of the system.</br> Avaliable algorithms: "metropolis"; "glauber". </br>
     The default is 'glauber'.
   </ul>
 </div>
