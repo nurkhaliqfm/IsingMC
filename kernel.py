@@ -2,16 +2,18 @@
 """
 import os
 import random
-from platform import system as pl_sys
+
 from math import exp
-from typing import Callable
+from platform import system as pl_sys
+from types import FunctionType
 
 
 def magnetization(number_nodes: int, lattice: list[list[int]]) -> float:
     """Returns magnetization of a system."""
     return 1/number_nodes*sum([sum(row) for row in lattice])
 
-def set_condition(algorithm: str) -> Callable[[float, float], float]:
+
+def set_condition(algorithm: str) -> FunctionType:
     """
     Returns a respectiv conditional function.
 
@@ -29,8 +31,10 @@ def set_condition(algorithm: str) -> Callable[[float, float], float]:
             return lambda x, y: 1/(1 + exp(x*y))
         case 'metropolis':
             return lambda x, y: exp(-x*y)
+    return lambda x, y: 1/(1 + exp(x*y))        # glauber as default
 
-def chose_print_function(lattice_length: int) -> Callable[[list[list[int]], str, str], None]:
+
+def chose_print_function(lattice_length: int) -> FunctionType:
     """Returns an essential function for displaying the visualization."""
     match pl_sys():
         case 'Windows':
@@ -39,8 +43,9 @@ def chose_print_function(lattice_length: int) -> Callable[[list[list[int]], str,
         case 'Linux':
             os.system(''.join(['resize -s ', str(lattice_length), ' ', str(lattice_length)]))  # resizing the window
             return print_configuration_bash
-        case _:
-            return print_configuration_empty
+
+    return print_configuration_empty
+
 
 def print_configuration_powershell(configuration_spins: list[list[int]],
                                    marker_up: str,
@@ -57,6 +62,7 @@ def print_configuration_powershell(configuration_spins: list[list[int]],
     os.system('cls')
     print(configuration)
 
+
 def print_configuration_bash(configuration_spins: list[list[int]],
                              marker_up: str,
                              marker_down: str
@@ -72,8 +78,13 @@ def print_configuration_bash(configuration_spins: list[list[int]],
     os.system('clear')
     print(configuration)
 
-def print_configuration_empty() -> None:
+
+def print_configuration_empty(configuration_spins: list[list[int]],
+                              marker_up: str,
+                              marker_down: str
+                             ) -> None:
     """An empty function."""
+
 
 def mc_raw(configuration: list[list[int]],
            monte_carlo_steps: int,
@@ -210,6 +221,7 @@ def mc_h(configuration: list[list[int]],
 
     return configuration, mag
 
+
 def mc_v(configuration: list[list[int]],
          monte_carlo_steps: int,
          reduced_temperature: float,
@@ -283,7 +295,8 @@ def mc_v(configuration: list[list[int]],
         mag.append(magnetization(nodes_number, configuration))
         print_function(configuration, am_up, am_down)
 
-    return configuration, mag  
+    return configuration, mag
+
 
 def mc_h_v(configuration: list[list[int]],
            monte_carlo_steps: int,
@@ -364,4 +377,3 @@ def mc_h_v(configuration: list[list[int]],
         print_function(configuration, am_up, am_down)
 
     return configuration, mag
-    
