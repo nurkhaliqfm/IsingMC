@@ -5,7 +5,7 @@ import random
 
 from math import exp
 from platform import system as pl_sys
-from types import FunctionType
+from types import FunctionType, LambdaType
 
 
 def magnetization(number_nodes: int, lattice: list[list[int]]) -> float:
@@ -13,7 +13,7 @@ def magnetization(number_nodes: int, lattice: list[list[int]]) -> float:
     return 1/number_nodes*sum([sum(row) for row in lattice])
 
 
-def set_condition(algorithm: str) -> FunctionType:
+def set_condition(algorithm: str) -> LambdaType:
     """
     Returns a respectiv conditional function.
 
@@ -84,6 +84,7 @@ def print_configuration_empty(configuration_spins: list[list[int]],
                               marker_down: str
                              ) -> None:
     """An empty function."""
+    return None
 
 
 def mc_raw(configuration: list[list[int]],
