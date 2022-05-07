@@ -19,125 +19,119 @@ The program provide Monte Carlo simulations of 2D Ising model.
 
 ## DESCRIPTION
 
-`-a <string>`</br>
-`--algorithm <string>`</br>
 <div>
+  <code>-a &lt;string&gt;</code></br>
+  <code>--algorithm &lt;string&gt;</code></br>
   <ul>
-    An algorithm used by the Monte Carlo method to computing evolution of the system. Avaliable algorithms:</br>
-        <div>
-        <ul>
-            <code>&lt;string&gt;</code>=='metropolis'</br>
-            <code>&lt;string&gt;</code>=='glauber'
-        </ul>
-        </div>
+    An algorithm used by the Monte Carlo method to computing evolution of the system. Avaliable algorithms: 'metropolis'; 'glauber'. </br>
     The default is 'glauber'.
   </ul>
 </div>
 </br>
 
-`-h <float>`</br>
-`--external-magnetic-field <float>`</br>
 <div>
+  <code>-h &lt;float&gt;</code></br>
+  <code>--external-magnetic-field &lt;float&gt;</code></br>
   <ul>
-    External homogenious magnetic field h=<code>&lt;float&gt;</code> of the system.</br>
+    External homogenious magnetic field h in the system.</br>
     The default is 0.0.
   </ul>
 </div>
 </br>
 
-`--help`</br>
 <div>
+  <code>--help</code></br>
   <ul>
-    Prints that text, without executing the program.
+    Prints that text, without executing code.
   </ul>
 </div>
 </br>
 
-`-J <float>`</br>
-`--J <float>`</br>
-`--interaction <float>`</br>
 <div>
+  <code>-J &lt;float&gt;</code></br>
+  <code>--J &lt;float&gt;</code></br>
+  <code>--interaction &lt;float&gt;</code></br>
   <ul>
-    Interaction J=<code>&lt;float&gt;</code> between a pair of spins.</br>
+    Interaction parameter J between each pair of spins.</br>
     The default is 1.0.
   </ul>
 </div>
 </br>
 
-`-K <int>`</br>
-`--K <int>`</br>
-`--steps <int>`</br>
 <div>
+  <code>-K &lt;int&gt;</code></br>
+  <code>--K &lt;int&gt;</code></br>
+  <code>--steps &lt;int&gt;</code></br>
   <ul>
-    Number of desired MCSs (iterations) K==<code>&lt;int&gt;</code>.</br>
+    Time limit. Number of MCSs (iterations).</br>
     The default is 400.
   </ul>
 </div>
 </br>
 
-`-L <int>`</br>
-`--length <int>`</br>
 <div>
+  <code>-L &lt;int&gt;</code></br>
+  <code>--length &lt;int&gt;</code></br>
   <ul>
-    A length L=<code>&lt;int&gt;</code> of the lattice LxL in the system of spins.</br>
+    Length L of lattice LxL in the system of spins.</br>
     The default is 40.
   </ul>
 </div>
 </br>
 
-`-m0 <float>`</br>
-`--initial-magnetization <float>`</br>
 <div>
+  <code>-m0 &lt;float&gt;</code></br>
+  <code>--initial-magnetization &lt;float&gt;</code></br>
   <ul>
-    Initiated magnetization m(t=0)=<code>&lt;float&gt;</code>.</br>
+    Initial magnetization m(t=0) in the system.</br>
     The default is 0.0.
   </ul>
 </div>
 </br>
 
-`-s <int>`</br>
-`--seed <int>`</br>
 <div>
+  <code>-s &lt;int&gt;</code></br>
+  <code>--seed &lt;int&gt;</code></br>
   <ul>
-    A seed <code>&lt;int&gt;</code> for the random number generator in module "random".</br>
+    A seed for the random number generator in module "random" from the standard library.</br>
     The default is 1997.
   </ul>
 </div>
 </br>
 
-`-sc [<path>]`</br>
-`--save-configuration [<path>]`</br>
 <div>
+  <code>-sc [&lt;path&gt;]</code></br>
+  <code>--save-configuration [&lt;path&gt;]</code></br>
   <ul>
-    At the end of the simulation the configuration of spins S[ij] will be saved in a given directory <code>&lt;path&gt;</code>.</br>
-    The dafault is "./".
+    At the end of the simulation the configuration of spins S[ij] will be saved in the given directory.</br>
+    The dafault is ".\".
   </ul>
 </div>
 </br>
 
-`-sm [<path>]`</br>
-`--save-magnetization [<path>]`</br>
 <div>
+  <code>-sm [&lt;path&gt;]</code></br>
+  <code>--save-magnetization [&lt;path&gt;]</code></br>
   <ul>
-    At the end of the simulation the time-dependent evolution of magnetization m(t) [MCS] of the system will be saved in a given directory <code>&lt;path&gt;</code>.</br>
-    The dafault is "./" (the path of this module).
+    At the end of a simulation, time-dependent evolution of magnetization m in the system will be saved in the given directory.</br>
+    The dafault is ".\".
   </ul>
 </div>
 </br>
 
-`-T* <float>`</br>
-`--temperature-reduced <float>`</br>
 <div>
+  <code>-T* &lt;float&gt;</code></br>
+  <code>--temperature-reduced &lt;float&gt;</code></br>
   <ul>
-    Reduced temperature T*=<code>&lt;float&gt;</code> of the system, where T*=1/(J x Beta).</br>
+    Reduced temperature T* in the system. T*==1/(J x Beta).</br>
     The default is 1.0.
   </ul>
 </div>
 </br>
 
-`-v [<char><char>]`</br>
-`--visualization [<char><char>]`</br>
 <div>
+  <code>-v [&lt;char&gt;&lt;char&gt;]</code></br>
+  <code>--visualization [&lt;char&gt;&lt;char&gt;]</code></br>
   <ul>
     Turns on the visual evolution of the system. <code>&lt;char&gt;&lt;char&gt;</code> is a pair of characters that represents spin "up" and spin "down". The total time of execution will increase.</br>
     The default pair is U+0020, U+2588.
@@ -157,4 +151,4 @@ The program provide Monte Carlo simulations of 2D Ising model.
 
 ## DATASETS
 
-Check examples of generated data in [Kaggle](https://www.kaggle.com/datasets/quantumbraindisorder/magnetization).
+Check examples of generated datasets in [Kaggle](https://www.kaggle.com/datasets/quantumbraindisorder/magnetization).
