@@ -1,5 +1,4 @@
-"""
-Kernel algorithms for the Monte Carlo method in the 2D Ising model.
+"""Kernel algorithms for the Monte Carlo method in the 2D Ising model.
 """
 import os
 import random

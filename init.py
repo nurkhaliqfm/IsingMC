@@ -1,5 +1,4 @@
-"""
-The module provide a set of functions to initialize parameters.
+"""The module provide a set of functions to initialize parameters.
 """
 FLAGS =  [
         '-s', '--seed',
@@ -14,6 +13,7 @@ FLAGS =  [
         '-sc', '--save-configuration',
         '-sm', '--save-magnetization'
         ]
+
 
 def get_value(argv: list[str], args: list[str]):
     """Checks if an any argument from the list Args were given in the list Argv and returns it is value or None object."""
@@ -39,6 +39,7 @@ def get_value(argv: list[str], args: list[str]):
 
     return None
 
+
 def seed_from(argv: list[str]) -> int:
     """Returns the given random seed form the command line."""
     args = ['-s', '--seed']     # appropriate arguments
@@ -54,6 +55,7 @@ def seed_from(argv: list[str]) -> int:
                 raise TypeError('seed must be not empty') from exc
 
     return value
+
 
 def lattice_length_from(argv: list[str]) -> int:
     """Returns the given length L of the lattice of spins L x L."""
@@ -74,6 +76,7 @@ def lattice_length_from(argv: list[str]) -> int:
 
     return value
 
+
 def reduced_temperature_from(argv: list[str]) -> float:
     """Returns the given reduced temperature T*."""
     args = ['-T*', '--temperature-reduced']
@@ -93,6 +96,7 @@ def reduced_temperature_from(argv: list[str]) -> float:
 
     return value
 
+
 def external_magnetic_field_from(argv: list[str]) -> float:
     """Returns the given value of an external magnetic field h in the system."""
     args = ['-h', '--external-magnetic field']
@@ -109,6 +113,7 @@ def external_magnetic_field_from(argv: list[str]) -> float:
 
     return value
 
+
 def interaction_from(argv: list[str]) -> float:
     """Returns the given interaction parameter J."""
     args = ['-J', '--J', '--intercation']
@@ -124,6 +129,7 @@ def interaction_from(argv: list[str]) -> float:
                 raise TypeError('parameter of interaction J must be not empty') from exc
 
     return value
+
 
 def mcss_from(argv: list[str]) -> int:
     """Returns the given number of MCSs."""
@@ -144,6 +150,7 @@ def mcss_from(argv: list[str]) -> int:
 
     return value
 
+
 def initial_magnetization_from(argv: list[str]) -> str:
     """Returns the given value of initial magnetization in the system."""
     args = ['-m0', '--initial-magnetization']
@@ -163,6 +170,7 @@ def initial_magnetization_from(argv: list[str]) -> str:
 
     return value
 
+
 def algorithm_from(argv: list[str]) -> str:
     """Returns the given name of choosen algorithm."""
     args = ['-alg', '--algorithm']
@@ -181,6 +189,7 @@ def algorithm_from(argv: list[str]) -> str:
         return value
     raise ValueError('the choosen algorithm must be \'metropolis\' or \'glauber\'')
 
+
 def visualization_markers_from(argv: list[str]) -> tuple[str]:
     """This function optionally returns the given markers for displaying an visualization of evolution in the system."""
     args = ['-v', '--visualization']
@@ -196,6 +205,7 @@ def visualization_markers_from(argv: list[str]) -> tuple[str]:
 
     return value
 
+
 def save_configuration_path_from(argv: list[str]) -> str:
     """Returns the given path to save the final state of the system."""
     args = ['-sc', '--save-configuration']
@@ -209,6 +219,7 @@ def save_configuration_path_from(argv: list[str]) -> str:
             return '.\\'
 
     return value
+
 
 def save_magnetization_path_from(argv: list[str]) -> str:
     """Returns the given path to save the evolution of magnetization in the system."""
@@ -224,8 +235,8 @@ def save_magnetization_path_from(argv: list[str]) -> str:
 
     return value
 
-DOCS = """
-ABOUT
+
+DOCS = """ABOUT
 The program provide Monte Carlo simulations of 2D Ising model.
 
 EVOKE

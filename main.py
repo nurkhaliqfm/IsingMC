@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-ABOUT
+"""ABOUT
 The program provide Monte Carlo simulations of 2D Ising model.
 
 EVOKE
@@ -70,10 +69,12 @@ DESCRIPTION
     The default pair is U+0020, U+2588.
 """
 if __name__ == '__main__':
-    import sys
-    import init
-    import random
     import os
+    import random
+    import sys
+    
+    import init
+    import kernel
 
     argv = sys.argv
 
@@ -96,6 +97,7 @@ if __name__ == '__main__':
 
     beta = 1/interaction/red_temperature            # 1/(k_BT)
 
+
     def generate_spin(probability: float) -> int:
         """Return a spin 'up' with the given probability."""
         if random.random() <= probability:
@@ -116,42 +118,38 @@ if __name__ == '__main__':
     magnetization = ...
     if visualization:
         if emf == 0.0:
-            from kernel import mc_v
-            lattice, magnetization = mc_v(config,
-                                          mcss,
-                                          red_temperature,
-                                          beta,
-                                          algorithm,
-                                          seed,
-                                          visualization)
+            lattice, magnetization = kernel.mc_v(config,
+                                                 mcss,
+                                                 red_temperature,
+                                                 beta,
+                                                 algorithm,
+                                                 seed,
+                                                 visualization)
         else:
-            from kernel import mc_h_v
-            lattice, magnetization = mc_h_v(config,
-                                            mcss,
-                                            red_temperature,
-                                            emf,
-                                            beta,
-                                            algorithm,
-                                            seed,
-                                            visualization)
+            lattice, magnetization = kernel.mc_h_v(config,
+                                                   mcss,
+                                                   red_temperature,
+                                                   emf,
+                                                   beta,
+                                                   algorithm,
+                                                   seed,
+                                                   visualization)
     else:
         if emf == 0.0:
-            from kernel import mc_raw
-            lattice, magnetization = mc_raw(config,
-                                            mcss,
-                                            red_temperature,
-                                            beta,
-                                            algorithm,
-                                            seed)
+            lattice, magnetization = kernel.mc_raw(config,
+                                                   mcss,
+                                                   red_temperature,
+                                                   beta,
+                                                   algorithm,
+                                                   seed)
         else:
-            from kernel import mc_h
-            lattice, magnetization = mc_h(config,
-                                          mcss,
-                                          red_temperature,
-                                          emf,
-                                          beta,
-                                          algorithm,
-                                          seed)
+            lattice, magnetization = kernel.mc_h(config,
+                                                 mcss,
+                                                 red_temperature,
+                                                 emf,
+                                                 beta,
+                                                 algorithm,
+                                                 seed)
 
     # saving the configuration of spins
     if save_configuration_dir:
