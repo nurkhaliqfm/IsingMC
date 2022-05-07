@@ -157,4 +157,4 @@ The program provide Monte Carlo simulations of 2D Ising model.
 
 ## DATASETS
 
-You can check examples of generated data in [Kaggle](https://www.kaggle.com/datasets/quantumbraindisorder/magnetization).
+Check examples of generated data in [Kaggle](https://www.kaggle.com/datasets/quantumbraindisorder/magnetization).
