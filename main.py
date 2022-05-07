@@ -118,7 +118,7 @@ if __name__ == '__main__':
     magnetization = ...
     if visualization:
         if emf == 0.0:
-            lattice, magnetization = kernel.mc_v(config,
+            config, magnetization = kernel.mc_v(config,
                                                  mcss,
                                                  red_temperature,
                                                  beta,
@@ -126,7 +126,7 @@ if __name__ == '__main__':
                                                  seed,
                                                  visualization)
         else:
-            lattice, magnetization = kernel.mc_h_v(config,
+            config, magnetization = kernel.mc_h_v(config,
                                                    mcss,
                                                    red_temperature,
                                                    emf,
@@ -136,14 +136,14 @@ if __name__ == '__main__':
                                                    visualization)
     else:
         if emf == 0.0:
-            lattice, magnetization = kernel.mc_raw(config,
+            config, magnetization = kernel.mc_raw(config,
                                                    mcss,
                                                    red_temperature,
                                                    beta,
                                                    algorithm,
                                                    seed)
         else:
-            lattice, magnetization = kernel.mc_h(config,
+            config, magnetization = kernel.mc_h(config,
                                                  mcss,
                                                  red_temperature,
                                                  emf,
