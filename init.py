@@ -1,5 +1,4 @@
-"""The module provide a set of functions to initialize parameters.
-"""
+"""The module provide a set of functions to initialize parameters."""
 FLAGS =  [
         '-s', '--seed',
         '-L', '--length',

@@ -97,7 +97,6 @@ if __name__ == '__main__':
 
     beta = 1/interaction/red_temperature            # 1/(k_BT)
 
-
     def generate_spin(probability: float) -> int:
         """Return a spin 'up' with the given probability."""
         if random.random() <= probability:
