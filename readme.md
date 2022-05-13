@@ -42,7 +42,7 @@ The program provide Monte Carlo simulations of 2D Ising model.
 <div>
   <code>--help</code></br>
   <ul>
-    Prints that text, without executing code.
+    Prints that text, without executing the code.
   </ul>
 </div>
 </br>

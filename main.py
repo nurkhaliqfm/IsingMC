@@ -74,7 +74,8 @@ if __name__ == '__main__':
     import sys
     
     import init
-    import kernel
+    import core_metropolis
+    import core_glauber
 
     argv = sys.argv
 
@@ -115,40 +116,28 @@ if __name__ == '__main__':
 
     # general processing
     magnetization = ...
-    if visualization:
-        if emf == 0.0:
-            config, magnetization = kernel.mc_v(config,
-                                                 mcss,
-                                                 red_temperature,
-                                                 beta,
-                                                 algorithm,
-                                                 seed,
-                                                 visualization)
-        else:
-            config, magnetization = kernel.mc_h_v(config,
-                                                   mcss,
-                                                   red_temperature,
-                                                   emf,
-                                                   beta,
-                                                   algorithm,
-                                                   seed,
-                                                   visualization)
-    else:
-        if emf == 0.0:
-            config, magnetization = kernel.mc_raw(config,
-                                                   mcss,
-                                                   red_temperature,
-                                                   beta,
-                                                   algorithm,
-                                                   seed)
-        else:
-            config, magnetization = kernel.mc_h(config,
-                                                 mcss,
-                                                 red_temperature,
-                                                 emf,
-                                                 beta,
-                                                 algorithm,
-                                                 seed)
+    match algorithm:
+        case "metropolis" if visualization:
+            if emf == 0.0:
+                config, magnetization = core_metropolis.mc_v(config, mcss, red_temperature, beta, seed, visualization)
+            else:
+                config, magnetization = core_metropolis.mc_h_v(config, mcss, red_temperature, emf, beta, seed, visualization)
+        case "metropolis" if not visualization:
+            if emf == 0.0:
+                config, magnetization = core_metropolis.mc_raw(config, mcss, red_temperature, beta, seed)
+            else:
+                config, magnetization = core_metropolis.mc_h(config, mcss, red_temperature, emf, beta, seed)
+        case "glauber" if visualization:
+            if emf == 0.0:
+                config, magnetization = core_glauber.mc_v(config, mcss, red_temperature, beta, seed, visualization)
+            else:
+                config, magnetization = core_glauber.mc_h_v(config, mcss, red_temperature, emf, beta, seed, visualization)
+        case "glauber" if not visualization:
+            if emf == 0.0:
+                config, magnetization = core_glauber.mc_raw(config, mcss, red_temperature, beta, seed)
+            else:
+                config, magnetization = core_glauber.mc_h(config, mcss, red_temperature, emf, beta, seed)
+
 
     # saving the configuration of spins
     if save_configuration_dir:

@@ -1,96 +1,14 @@
-"""Kernel algorithms for the Monte Carlo method in the 2D Ising model."""
-import os
+"""Metropolis algorithms for the Monte Carlo method in the 2D Ising model."""
+from math import exp
 import random
 
-from math import exp
-from platform import system as pl_sys
-from types import FunctionType, LambdaType
-
-
-def magnetization(number_nodes: int, lattice: list[list[int]]) -> float:
-    """Returns magnetization of a system."""
-    return 1/number_nodes*sum([sum(row) for row in lattice])
-
-
-def set_condition(algorithm: str) -> LambdaType:
-    """
-    Returns a respectiv conditional function.
-
-    ### Parameters
-    algorithm
-    str
-        Conditional function. "glauber" or "metropolis".
-
-    ### Returns
-    FunctionType
-        Choosen function.
-    """
-    match algorithm:
-        case 'glauber':
-            return lambda x, y: 1/(1 + exp(x*y))
-        case 'metropolis':
-            return lambda x, y: exp(-x*y)
-    return lambda x, y: 1/(1 + exp(x*y))        # glauber as default
-
-
-def chose_print_function(lattice_length: int) -> FunctionType:
-    """Returns an essential function for displaying the visualization."""
-    match pl_sys():
-        case 'Windows':
-            os.system(''.join(['MODE ', str(lattice_length), ',', str(lattice_length)]))  # resizing the window
-            return print_configuration_powershell
-        case 'Linux':
-            os.system(''.join(['resize -s ', str(lattice_length), ' ', str(lattice_length)]))  # resizing the window
-            return print_configuration_bash
-
-    return print_configuration_empty
-
-
-def print_configuration_powershell(configuration_spins: list[list[int]],
-                                   marker_up: str,
-                                   marker_down: str
-                                  ) -> None:
-    """Prints given configuration of spins."""
-    configuration = ""
-    for row in configuration_spins:
-        for spin in row:
-            configuration = "".join([configuration, str(spin)])
-        configuration = "".join([configuration, '\n'])
-    configuration = configuration.replace('-1', marker_down)
-    configuration = configuration.replace('1', marker_up)
-    os.system('cls')
-    print(configuration)
-
-
-def print_configuration_bash(configuration_spins: list[list[int]],
-                             marker_up: str,
-                             marker_down: str
-                            ) -> None:
-    """Prints given configuration of spins."""
-    configuration = ""
-    for row in configuration_spins:
-        for spin in row:
-            configuration = "".join([configuration, str(spin)])
-        configuration = "".join([configuration, '\n'])
-    configuration = configuration.replace('-1', marker_down)
-    configuration = configuration.replace('1', marker_up)
-    os.system('clear')
-    print(configuration)
-
-
-def print_configuration_empty(configuration_spins: list[list[int]],
-                              marker_up: str,
-                              marker_down: str
-                             ) -> None:
-    """An empty function."""
-    return None
+import utils
 
 
 def mc_raw(configuration: list[list[int]],
            monte_carlo_steps: int,
            reduced_temperature: float,
            beta: float,
-           algorithm: str,
            seed: int
           ) -> tuple[list[list[int]], list[float]]:
     """
@@ -129,10 +47,9 @@ def mc_raw(configuration: list[list[int]],
     nodes_number = lattice_length*lattice_length            # number of nodes
     interaction_parameter = 1/beta/reduced_temperature      # parameter of interaction
 
-    mag = [magnetization(nodes_number, configuration)]      # initial state of magnetization
+    mag = [utils.magnetization(nodes_number, configuration)]      # initial state of magnetization
 
     # evolution
-    condition = set_condition(algorithm)
     for mcs in range(0, monte_carlo_steps):
         for iteration in range(0, nodes_number):
             ir = random.randrange(lattice_length)       # index of a random row
@@ -144,10 +61,10 @@ def mc_raw(configuration: list[list[int]],
 
             if delta < 0:
                 configuration[ir][ic] *= -1
-            elif random.random() < condition(delta, beta):
+            elif random.random() < exp(-delta*beta):
                 configuration[ir][ic] *= -1
 
-        mag.append(magnetization(nodes_number, configuration))
+        mag.append(utils.magnetization(nodes_number, configuration))
 
     return configuration, mag
 
@@ -157,7 +74,6 @@ def mc_h(configuration: list[list[int]],
          reduced_temperature: float,
          external_magnetic_field: float,
          beta: float,
-         algorithm: str,
          seed: int
         ) -> tuple[list[list[int]], list[float]]:
     """
@@ -197,11 +113,10 @@ def mc_h(configuration: list[list[int]],
     lattice_length = len(configuration)                     # number of rows and columns in the lattice
     nodes_number = lattice_length*lattice_length            # number of nodes
     interaction_parameter = 1/beta/reduced_temperature      # parameter of interaction
-    
-    mag = [magnetization(nodes_number, configuration)]      # initial state of magnetization
+
+    mag = [utils.magnetization(nodes_number, configuration)]      # initial state of magnetization
     
     # evolution
-    condition = set_condition(algorithm)
     for mcs in range(0, monte_carlo_steps):
         for iteration in range(0, nodes_number):
             ir = random.randrange(lattice_length)       # index of a random row
@@ -214,10 +129,10 @@ def mc_h(configuration: list[list[int]],
 
             if delta < 0:
                 configuration[ir][ic] *= -1
-            elif random.random() < condition(delta, beta):
+            elif random.random() < exp(-delta*beta):
                 configuration[ir][ic] *= -1
 
-        mag.append(magnetization(nodes_number, configuration))
+        mag.append(utils.magnetization(nodes_number, configuration))
 
     return configuration, mag
 
@@ -226,7 +141,6 @@ def mc_v(configuration: list[list[int]],
          monte_carlo_steps: int,
          reduced_temperature: float,
          beta: float,
-         algorithm: str,
          seed: int,
          visualization_markers: tuple[str, str]
         ) -> tuple[list[list[int]], list[float]]:
@@ -268,16 +182,15 @@ def mc_v(configuration: list[list[int]],
     nodes_number = lattice_length*lattice_length            # number of nodes
     interaction_parameter = 1/beta/reduced_temperature      # parameter of interaction
 
-    mag = [magnetization(nodes_number, configuration)]      # initial state of magnetization
+    mag = [utils.magnetization(nodes_number, configuration)]      # initial state of magnetization
 
     am_up   = visualization_markers[0]     # marker of spins "up"
     am_down = visualization_markers[1]     # marker of spins "down"
 
-    print_function = chose_print_function(lattice_length)
+    print_function = utils.chose_print_function(lattice_length)
     print_function(configuration, am_up, am_down)
 
     # evolution
-    condition = set_condition(algorithm)
     for mcs in range(0, monte_carlo_steps):
         for iteration in range(0, nodes_number):
             ir = random.randrange(lattice_length)       # index of a random row
@@ -289,10 +202,10 @@ def mc_v(configuration: list[list[int]],
 
             if delta < 0:
                 configuration[ir][ic] *= -1
-            elif random.random() < condition(delta, beta):
+            elif random.random() < exp(-delta*beta):
                 configuration[ir][ic] *= -1
 
-        mag.append(magnetization(nodes_number, configuration))
+        mag.append(utils.magnetization(nodes_number, configuration))
         print_function(configuration, am_up, am_down)
 
     return configuration, mag
@@ -303,7 +216,6 @@ def mc_h_v(configuration: list[list[int]],
            reduced_temperature: float,
            external_magnetic_field: float,
            beta: float,
-           algorithm: str,
            seed: int,
            visualization_markers: tuple[str, str]
           ) -> tuple[list[list[int]], list[float]]:
@@ -348,16 +260,15 @@ def mc_h_v(configuration: list[list[int]],
     nodes_number = lattice_length*lattice_length            # number of nodes
     interaction_parameter = 1/beta/reduced_temperature      # parameter of interaction
     
-    mag = [magnetization(nodes_number, configuration)]      # initial state of magnetization
+    mag = [utils.magnetization(nodes_number, configuration)]      # initial state of magnetization
 
     am_up   = visualization_markers[0]     # marker of spins "up"
     am_down = visualization_markers[1]     # marker of spins "down"
 
-    print_function = chose_print_function(lattice_length)
+    print_function = utils.chose_print_function(lattice_length)
     print_function(configuration, am_up, am_down)
 
     # evolution
-    condition = set_condition(algorithm)
     for mcs in range(0, monte_carlo_steps):
         for iteration in range(0, nodes_number):
             ir = random.randrange(lattice_length)       # index of a random row
@@ -370,10 +281,10 @@ def mc_h_v(configuration: list[list[int]],
 
             if delta < 0:
                 configuration[ir][ic] *= -1
-            elif random.random() < condition(delta, beta):
+            elif random.random() < exp(-delta*beta):
                 configuration[ir][ic] *= -1
 
-        mag.append(magnetization(nodes_number, configuration))
+        mag.append(utils.magnetization(nodes_number, configuration))
         print_function(configuration, am_up, am_down)
 
     return configuration, mag
