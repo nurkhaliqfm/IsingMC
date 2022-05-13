@@ -10,7 +10,7 @@
 
 ## ABOUT
 
-The program provide Monte Carlo simulations of 2D Ising model.
+The program provide the Monte Carlo simulations of 2D Ising model.
 
 ## COMMAND LINE INTERFACE
 
@@ -23,7 +23,7 @@ The program provide Monte Carlo simulations of 2D Ising model.
   <code>-a &lt;string&gt;</code></br>
   <code>--algorithm &lt;string&gt;</code></br>
   <ul>
-    An algorithm used by the Monte Carlo method to computing evolution of the system.</br> Avaliable algorithms: "metropolis"; "glauber". </br>
+    An algorithm used by Monte Carlo method to computing the evolution of system.</br> Avaliable algorithms: "metropolis"; "glauber". </br>
     The default is 'glauber'.
   </ul>
 </div>
@@ -93,7 +93,7 @@ The program provide Monte Carlo simulations of 2D Ising model.
   <code>-s &lt;int&gt;</code></br>
   <code>--seed &lt;int&gt;</code></br>
   <ul>
-    A seed for the random number generator in module "random" from the standard library.</br>
+    A seed for random number generator in module "random" from the standard library.</br>
     The default is 1997.
   </ul>
 </div>
@@ -103,7 +103,7 @@ The program provide Monte Carlo simulations of 2D Ising model.
   <code>-sc [&lt;path&gt;]</code></br>
   <code>--save-configuration [&lt;path&gt;]</code></br>
   <ul>
-    At the end of the simulation the configuration of spins S[ij] will be saved in the given directory.</br>
+    At the end of the simulation the configuration of spins S[ij] will be saved in given directory.</br>
     The dafault is ".\".
   </ul>
 </div>
@@ -113,7 +113,7 @@ The program provide Monte Carlo simulations of 2D Ising model.
   <code>-sm [&lt;path&gt;]</code></br>
   <code>--save-magnetization [&lt;path&gt;]</code></br>
   <ul>
-    At the end of a simulation, time-dependent evolution of magnetization m in the system will be saved in the given directory.</br>
+    At the end of a simulation, time-dependent evolution of magnetization m in the system will be saved in given directory.</br>
     The dafault is ".\".
   </ul>
 </div>
@@ -133,7 +133,7 @@ The program provide Monte Carlo simulations of 2D Ising model.
   <code>-v [&lt;char&gt;&lt;char&gt;]</code></br>
   <code>--visualization [&lt;char&gt;&lt;char&gt;]</code></br>
   <ul>
-    Turns on the visual evolution of the system. <code>&lt;char&gt;&lt;char&gt;</code> is a pair of characters that represents spin "up" and spin "down". The total time of execution will increase.</br>
+    Turns on the visual evolution of the system. <code>&lt;char&gt;&lt;char&gt;</code> is a pair of characters which represent spin "up" and spin "down". The total time of the execution will increase.</br>
     The default pair is U+0020, U+2588.
   </ul>
 </div>
