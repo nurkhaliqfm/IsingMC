@@ -238,10 +238,10 @@ def visualization_markers_from(argv: list[str]) -> tuple[str]:
 DOCS = """ABOUT
 The program provide Monte Carlo simulations of 2D Ising model.
 
-EVOKE
+COMMAND LINE INTERFACE
 py main.py [-a|--algorithm <string>] [-h|--external-magnetic-field <float>] [--help] [-J|--J|--interaction <float>] [-K|--K|--steps <int>] [-L|--length <int>] [-m0|--initial-magnetization <float>] [-s|--seed <int>] [-sc|--save-configuration [<path>]] [-sm|--save-magnetization [<path>]] [-T*|--temperature-reduced <float>] [-v|--visualization [<char><char>]]
 
-DESCRIPTION
+MANUAL
 -a <string>
 --algorithm <string>
     An algorithm used by the Monte Carlo method to computing evolution of the system. Avaliable algorithms:

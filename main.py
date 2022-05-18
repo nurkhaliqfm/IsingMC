@@ -2,10 +2,10 @@
 """ABOUT
 The program provide Monte Carlo simulations of 2D Ising model.
 
-EVOKE
+COMMAND LINE INTERFACE
 py main.py [-a|--algorithm <string>] [-h|--external-magnetic-field <float>] [--help] [-J|--J|--interaction <float>] [-K|--K|--steps <int>] [-L|--length <int>] [-m0|--initial-magnetization <float>] [-s|--seed <int>] [-sc|--save-configuration [<path>]] [-sm|--save-magnetization [<path>]] [-T*|--temperature-reduced <float>] [-v|--visualization [<char><char>]]
 
-DESCRIPTION
+MANUAL
 -a <string>
 --algorithm <string>
     An algorithm used by the Monte Carlo method to computing evolution of the system. Avaliable algorithms:
@@ -164,7 +164,6 @@ if __name__ == '__main__':
                     else:
                         file.write('0')
                 file.write('\n')
-            file.close()
 
     # saving the evolution of magnetization
     if save_magnetization_dir:
@@ -186,4 +185,4 @@ if __name__ == '__main__':
         with open(file_path, 'w', encoding='UTF-8') as file:
             for m in magnetization:
                 file.write(str(m) + '\n')
-            file.close()
+

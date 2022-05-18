@@ -72,7 +72,7 @@ def mc_h(configuration: list[list[int]],
          seed: int
         ) -> tuple[list[list[int]], list[float]]:
     """
-    A Monte Carlo method with incorporated external magnetic field.
+    Monte Carlo method with incorporated external magnetic field.
 
     ### Parameters
     configuration
@@ -135,7 +135,7 @@ def mc_v(configuration: list[list[int]],
          visualization_markers: tuple[str, str]
         ) -> tuple[list[list[int]], list[float]]:
     """
-    A Monte Carlo method on the Glauber algorithm with visualization.
+    Monte Carlo method on the Glauber algorithm with visualization.
 
     ### Parameters
     configuration
@@ -205,7 +205,7 @@ def mc_h_v(configuration: list[list[int]],
            visualization_markers: tuple[str, str]
           ) -> tuple[list[list[int]], list[float]]:
     """
-    A Monte Carlo method with visualization and external magnetic.
+    Monte Carlo method with visualization and external magnetic.
 
     ### Parameters
     configuration
