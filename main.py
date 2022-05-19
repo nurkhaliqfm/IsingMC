@@ -89,7 +89,7 @@ if __name__ == '__main__':
     if '--help' in argv:
         print(init.DOCS)
         sys.exit()
-        
+
     # initializing parameters
     seed = init.seed_from(argv)                                         # for random trajectories
     lattice_length = init.lattice_length_from(argv)                     # length of the lattice
@@ -116,6 +116,7 @@ if __name__ == '__main__':
             config[-1].append(generate_spin(up_probability))
 
     # general processing
+    # algorithms split to several forms to save the time
     magnetization = ...
     match algorithm:
         case "metropolis" if visualization:
