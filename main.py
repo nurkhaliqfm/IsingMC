@@ -68,6 +68,13 @@ MANUAL
     Turns on the visual evolution of the system. <char><char> is a pair of characters that represents spin "up" and spin "down". The total time of execution will increase.
     The default pair is U+0020, U+2588.
 """
+def generate_spin(probability: float) -> int:
+    """Return a spin 'up' with the given probability."""
+    if random.random() <= probability:
+        return 1
+    return -1
+
+
 if __name__ == '__main__':
     import os
     import random
@@ -97,12 +104,6 @@ if __name__ == '__main__':
     save_magnetization_dir = init.save_magnetization_path_from(argv)    # path to save magnetization
 
     beta = 1/interaction/red_temperature            # 1/(k_BT)
-
-    def generate_spin(probability: float) -> int:
-        """Return a spin 'up' with the given probability."""
-        if random.random() <= probability:
-            return 1
-        return -1
 
     # initializing a system of spins
     random.seed(seed)
