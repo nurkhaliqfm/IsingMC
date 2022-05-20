@@ -10,7 +10,7 @@
 
 ## ABOUT
 
-The program provide the Monte Carlo simulations of 2D Ising model.
+The program provide Monte Carlo simulations of 2D Ising model.
 
 ## COMMAND LINE INTERFACE
 
@@ -151,4 +151,4 @@ The program provide the Monte Carlo simulations of 2D Ising model.
 
 ## DATASETS
 
-Check examples of generated datasets in [Kaggle](https://www.kaggle.com/datasets/quantumbraindisorder/magnetization).
+Check the examples of generated datasets in [Kaggle](https://www.kaggle.com/datasets/quantumbraindisorder/magnetization).
