@@ -12,12 +12,16 @@
 
 The program provide Monte Carlo simulations of 2D Ising model.
 
+## REQUIREMENTS
+
+    Python >= 3.10.2
+
 ## COMMAND LINE INTERFACE
 
     py main.py [-a|--algorithm <string>] [-h|--external-magnetic-field <float>] [--help] [-J|--J|--interaction <float>] [-K|--K|--steps <int>] [-L|--length <int>] [-m0|--initial-magnetization <float>] [-s|--seed <int>] [-sc|--save-configuration [<path>]] [-sm|--save-magnetization [<path>]] [-T*|--temperature-reduced <float>] [-v|--visualization [<char><char>]]
 
 
-## MANUAL
+## ARGUMENTS
 
 <div>
   <code>-a &lt;string&gt;</code></br>
@@ -138,10 +142,6 @@ The program provide Monte Carlo simulations of 2D Ising model.
   </ul>
 </div>
 </br>
-    
-## REQUIREMENTS
-
-    Python >= 3.10.2
 
 ## EXAMPLES
 
@@ -151,4 +151,4 @@ The program provide Monte Carlo simulations of 2D Ising model.
 
 ## DATASETS
 
-Check the examples of generated datasets in [Kaggle](https://www.kaggle.com/datasets/quantumbraindisorder/magnetization).
+Check the examples of generated datasets at [Kaggle](https://www.kaggle.com/datasets/aw6ro7zcd/magnetization).
