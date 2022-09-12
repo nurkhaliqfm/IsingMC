@@ -59,11 +59,11 @@ This command can be even shorter, if the Python Launcher is present
 
     PS C:\Users\Administrator\IsingMC> py main.py -L 30 -m0 1.0 -sc
 
-### EXAMPLES
+<!-- ### EXAMPLES
 
     py main.py -T* 2.26 -a "metropolis" -v
     py main.py -L 30 -m0 1.0 -sc
-    py main.py --seed 23 -K 3000 -sm "./data/"
+    py main.py --seed 23 -K 3000 -sm "./data/" -->
 
 
 ### ARGUMENTS
