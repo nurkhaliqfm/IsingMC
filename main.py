@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """ABOUT
 The program provide Monte Carlo simulations of 2D Ising model.
 
@@ -46,7 +45,7 @@ MANUAL
 -s <int>
 --seed <int>
     A seed <int> for the random number generator in module "random".
-    The default is 1997.
+    The default is 255.
 
 -sc [<path>]
 --save-configuration [<path>]

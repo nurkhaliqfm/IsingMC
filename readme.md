@@ -1,5 +1,5 @@
 
-<h1 align="center"><strong>Monte Carlo simulations of Ising Model</strong></h>
+<h1 align="center"><strong>Monte Carlo simulations of the Ising Model</strong></h>
 
 </br>
 </br>
@@ -10,18 +10,65 @@
 
 ## ABOUT
 
-The program provide Monte Carlo simulations of 2D Ising model.
+In selected materials, e.g. Fe, Ni, Gd, Co, the temperature strongly affects to their behavior. Each of them has a unique threshold, the Critical Point T<sup>c</sup>, 1034 K for Fe and 292 K for Gd, that causes a transition between the ferromagnetic phase and the paramagnetic phase of the material. When you put a ferromagnetic in a strong magnetic field, it is quite likely that it will move or at least change itself orientation along with trying to keep this established orientation all the time. Now, if you start to cooling the material, till the temperature T will be lower than the critical temperature T<sup>c</sup> (paramagnetic phase), the material should be emancipated from the magnetic field, there will be no correlation between them. This works because of spins. Each atom of a material has the spin feature. If all of spins are the same (an ordered arrangement), the material will be interacting with the magnetic field (ferromagnetic phase), in otherwise (no ordered arrangement) there will be no interaction with the magnetic field (paramagnetic phase). The 2D Ising Model provides procedures to calculate the evolution of behavior of 2D materials at various temperatures. You can find more informations about the Ising Model at [Wei Cai's paper](http://micro.stanford.edu/~caiwei/me334/Chap12_Ising_Model_v04.pdf).
+
+The Python is needed for using the program. The center of the source code is module main.py in which: at the beginning is given the short manual; then there are placed used functions; the trailing if statement controls everything. The listing included in this statement consists of few following sections: modules import; parameters initiation; creation of a system; evolution of the system; results save.
 
 ## REQUIREMENTS
 
-    Python >= 3.10.2
+    Python >= 3.10
 
-## COMMAND LINE INTERFACE
+## INTERFACE
 
-    py main.py [-a|--algorithm <string>] [-h|--external-magnetic-field <float>] [--help] [-J|--J|--interaction <float>] [-K|--K|--steps <int>] [-L|--length <int>] [-m0|--initial-magnetization <float>] [-s|--seed <int>] [-sc|--save-configuration [<path>]] [-sm|--save-magnetization [<path>]] [-T*|--temperature-reduced <float>] [-v|--visualization [<char><char>]]
+### OVERVIEW 
+
+The program is written in Python as few linked modules. To start a simulation, module main.py must be executed. Specifying arguments gives the opportunity to controll the simulation. You can find short description of them below. Here is the general command to run the program:
+
+    python main.py [-a|--algorithm <string>] [-h|--external-magnetic-field <float>] [--help] [-J| --J|--interaction <float>] [-K|--K|--steps <int>] [-L|--length <int>] [-m0|--initial-magnetization <float>] [-s|--seed <int>] [-sc|--save-configuration [<path>]] [-sm|--save-magnetization [<path>]] [-T*|--temperature-reduced <float>] [-v|--visualization [<char><char>]]
+
+This formula looks different, dependently of work station, installed Python and way of execution. The following part exposes some of practical examples.
+
+### INTEGRATION
+
+Exists several ways to run a Python script, you can do it by a Pyton interpreter, an integrated development environment, a terminal or a command line. Some of them are described below. 
+
+<!-- ####  READ-EVAL-PRINT-LOOP
+The simplest method to run the probram via an interpreter is to use the REPL. Dependently of form of installed Python, just call out function exec() to run a script. Here are examples
+
+#### IDLE 
+
+Python’s Integrated Development and Learning Environment is the standard Integrated Development Environment provided by Python's installer. It works on REPL in basis, so you can use the same commands. 
+
+#### BASH-->
+
+#### POWERSHELL
+
+The PowerShell given by the Windows, in general demands the the path to the Python and the path to the program
+
+    PS C:\Users\Administrator> . "C:\Program Files\Python\python.exe"   C:\Users\Administrator\IsingMC\main.py -L 30 -m0 1.0 -sc
+
+Both of them can be abbreviated in some cases e.g. in current working directory
+
+    PS C:\Users\Administrator\IsingMC> . "C:\Program Files\Python\python.exe" main.py -L 30 -m0 1.0 -sc
+
+If the Python is added to the Environment Variables in Windows, appears a simpler procedure
+
+    PS C:\Users\Administrator\IsingMC> python main.py -L 30 -m0 1.0 -sc
+
+This command can be even shorter, if the Python Launcher is present
+
+    PS C:\Users\Administrator\IsingMC> py main.py -L 30 -m0 1.0 -sc
+
+### EXAMPLES
+
+    py main.py -T* 2.26 -a "metropolis" -v
+    py main.py -L 30 -m0 1.0 -sc
+    py main.py --seed 23 -K 3000 -sm "./data/"
 
 
-## ARGUMENTS
+### ARGUMENTS
+
+Specified arguments gives the opportunity to controll the parameters of simulation. You can find a short description below.
 
 <div>
   <code>-a &lt;string&gt;</code></br>
@@ -98,7 +145,7 @@ The program provide Monte Carlo simulations of 2D Ising model.
   <code>--seed &lt;int&gt;</code></br>
   <ul>
     A seed for random number generator in module "random" from the standard library.</br>
-    The default is 1997.
+    The default is 255.
   </ul>
 </div>
 </br>
@@ -143,12 +190,6 @@ The program provide Monte Carlo simulations of 2D Ising model.
 </div>
 </br>
 
-## EXAMPLES
+## DATA
 
-    py main.py -T* 2.26 -a "metropolis" -v
-    py main.py -L 30 -m0 1.0 -sc
-    py main.py --seed 23 -K 3000 -sm "./data/"
-
-## DATASETS
-
-Check the examples of generated datasets at [Kaggle](https://www.kaggle.com/datasets/aw6ro7zcd/magnetization).
+Check the examples of generated data at [Kaggle](https://www.kaggle.com/datasets/aw6ro7zcd/magnetization).

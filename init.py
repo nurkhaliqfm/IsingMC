@@ -206,7 +206,7 @@ def seed_from(argv: list[str]) -> int:
     """Returns the given random seed form the command line."""
     args = ['-s', '--seed']     # appropriate arguments
 
-    value = 1997        # the default value
+    value = 255        # the default value
     try:
         value = int(get_value(argv, args))
     except ValueError as exc:
@@ -282,7 +282,7 @@ MANUAL
 -s <int>
 --seed <int>
     A seed <int> for the random number generator in module "random".
-    The default is 1997.
+    The default is 255.
 
 -sc [<path>]
 --save-configuration [<path>]
